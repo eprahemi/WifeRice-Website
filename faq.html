@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FAQ — WifeRice Dotfiles</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2311151a'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='20' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Frequently asked questions about WifeRice Hyprland dotfiles, QuickShell, installation, GPU drivers, and Arch Linux setup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/eprahemi/WifeRice">
+  <meta property="og:title" content="FAQ — WifeRice Dotfiles">
+  <meta property="og:description" content="Frequently asked questions about WifeRice Hyprland dotfiles, QuickShell, installation, GPU drivers, and Arch Linux setup.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FAQ — WifeRice Dotfiles">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="home.html" class="nav-logo">WifeRice</a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install-arch.html">Arch Install</a>
+      <a href="install-dots.html">Dotfiles</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="components.html">Components</a>
+      <a href="faq.html" class="active">FAQ</a>
+      <a href="keybinds.html">Keybinds</a>
+      <a href="screenshots.html">Screenshots</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button>
+    </div>
+    <button class="nav-hamburger" onclick="this.parentElement.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero-mini">
+  <h1>Frequently Asked Questions</h1>
+  <p>Common questions about the WifeRice dotfiles and Arch Linux setup.</p>
+</section>
+
+<section>
+  <div class="container">
+    <input type="text" class="search-box" id="faq-search" placeholder="Search FAQ..." oninput="filterFaq(this.value)">
+    <div class="faq-grid">
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>What is WifeRice?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">WifeRice is a complete Hyprland desktop environment configuration for Arch Linux. It features a custom QuickShell-based UI with a top bar, floating sidebar, 15+ popup widgets (battery, volume, network, Bluetooth, clipboard, music, calendar, weather, app launcher, and more), dynamic Matugen theming that adapts to your wallpaper, a beautiful lock screen with music player, SDDM login theme, wallpaper collection with a picker UI, and an automated installer that handles everything from GPU drivers to systemd services. The entire desktop is designed around a deep purple amethyst noir aesthetic.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>Does the installer wipe my existing config?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">No. The installer asks what to preserve before making any changes. It prompts: <strong>keybinds & shortcuts</strong>, <strong>terminal & editor</strong> (Kitty, Neovim), <strong>desktop configs</strong> (Rofi, SwayNC, Matugen), and <strong>wallpapers</strong>. It also asks if you want to <strong>override the SDDM theme</strong> and optionally lets you configure <strong>weather API</strong>. Whatever you choose to keep is left untouched. Your <code>settings.json</code> (monitor layout, startup apps, custom keybinds) is never touched. The only files overwritten are the QuickShell QML files, scripts, and config templates — everything you'd want updated. Weather <code>.env</code> and <code>~/.Wallpapers/</code> survive every update.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>Can I use this on an existing Arch installation?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Yes. The one-liner installer works on both fresh and existing Arch systems. It detects what's already installed and only adds missing packages via pacman and yay. Your existing files in <code>~/Pictures/Wallpapers/</code>, <code>~/.Wallpapers/</code>, and <code>~/.config/hypr/settings.json</code> are preserved. The installer also detects your GPU (NVIDIA, AMD, or Intel) and installs the appropriate drivers if missing. Note: this is designed for Arch Linux and arch-based distros only. For EndeavourOS or Manjaro, see "Can I install this on EndeavourOS or Manjaro?" below.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>What GPU drivers are supported?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Three GPU families are supported:<br><br><strong>NVIDIA</strong> — proprietary drivers (<code>nvidia nvidia-utils nvidia-settings lib32-nvidia-utils</code>). The installer handles NVIDIA Optimus laptops with PRIME configuration.<br><br><strong>AMD</strong> — open-source mesa/amdgpu (<code>mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon</code>). Works out of the box.<br><br><strong>Intel</strong> — open-source mesa (<code>mesa lib32-mesa vulkan-intel lib32-vulkan-intel</code>). Works out of the box.<br><br>The installer detects your GPU during step 3 and installs the appropriate drivers automatically. If you have both an integrated and discrete GPU (e.g., Intel + NVIDIA), the installer configures PRIME for you.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I update the dotfiles?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Three ways:<br><br><strong>1. Automatic notification</strong> — The update notifier daemon checks for new versions every 10 minutes. When a new version is detected, a notification appears in the top bar. Click it to run the installer.<br><br><strong>2. Manual one-liner</strong> — Run the same install command: <code>bash -c "$(curl -fsSL https://raw.githubusercontent.com/eprahemi/WifeRice/main/install.sh)"</code><br><br><strong>3. Via Guide</strong> — Press Super+H, go to the Recent Changes tab. If an update is available, click the update button.<br><br>All methods are safe — they preserve your settings and ask what to keep. After updating, check the changelog tab (Super+H) or the website changelog to see what changed.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>What is QuickShell?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">QuickShell is a Qt Quick-based shell environment for Hyprland. Think of it like a lightweight desktop shell — it replaces panels, docks, and widgets with QML-based UIs that render directly on the GPU. WifeRice runs three QuickShell instances:<br><br><strong>Main.qml</strong> — The overlay that hosts all popup widgets (battery, volume, network, Bluetooth, clipboard, calendar, app launcher, notifications, etc.).<br><br><strong>TopBar.qml</strong> — A multi-monitor horizontal bar with workspaces, clock, system tray, volume slider, battery indicator, network status, and keyboard layout.<br><br><strong>Floating.qml</strong> — A right-edge floating sidebar with quick actions and system stats.<br><br><strong>Lock.qml</strong> — A full-screen lock screen with clock, music player, and PAM authentication.<br><br>Unlike conventional panels (Waybar, Polybar), QuickShell QML components can animate, blend, and interact like a modern app. It's the same technology KDE Plasma uses under the hood.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I change the lock screen wallpaper?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Drop any image file into <code>~/.Wallpapers/</code> with the name <code>lock.*</code> (e.g., <code>lock.png</code>, <code>lock.jpg</code>, <code>lock.webp</code>). The lock script detects it automatically. Priority order: <code>~/.Wallpapers/lock.*</code> (user custom, highest priority) → <code>/usr/share/wallpapers/lock.png</code> (system default, overwritten on install). If you want the lock screen to match your desktop wallpaper, just open the wallpaper picker (Super+W) and set your wallpaper — the lock screen follows. For the SDDM login screen wallpaper, see "The SDDM theme doesn't show up" below.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I set up weather on the calendar?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">The installer asks if you want to configure weather during setup. If you skipped it or want to change it:<br><br>1. Get a free API key at <a href="https://openweathermap.org/api" target="_blank" style="color:var(--cyan);">openweathermap.org</a> (free tier allows 60 calls/minute)<br>2. Find your city ID at <a href="https://openweathermap.org/find" target="_blank" style="color:var(--cyan);">openweathermap.org/find</a><br>3. Edit <code>~/.config/hypr/scripts/quickshell/calendar/.env</code>:<br><br><code>WEATHER_API_KEY=your_key_here<br>CITY_ID=your_city_id<br>WEATHER_UNIT=metric</code> (or imperial)<br><br>4. Reload QuickShell: Super+R<br><br>The <code>.env</code> file is preserved during updates — it has <code>chmod 600</code> permissions and is explicitly excluded from the rsync deploy.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>My wallpaper picker shows stale thumbnails</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">The picker prunes orphan thumbnails automatically every time you open it. If you still see stale or broken entries:<br><br><strong>Clear color markers only:</strong><br><code>rm -rf ~/.cache/wallpaper_picker/colors_markers/*</code><br><br><strong>Rebuild everything from scratch:</strong><br><code>rm -rf ~/.cache/wallpaper_picker/</code><br><br>New thumbnails regenerate on next picker open. The first load may take a few seconds depending on how many wallpapers you have. Thumbnails are cached as WebP (256px wide) for fast loading on subsequent opens. The color markers store dominant color info used by the filter buttons (Red, Orange, Yellow, Green, Blue, Purple, Pink, Monochrome, Video, All).</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I change keyboard layouts?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Edit <code>~/.config/hypr/settings.json</code> and change the <code>"language"</code> field. For example, <code>"us,ara"</code> gives you US English with Arabic as a second layout. Multiple layouts can be comma-separated. After saving:<br><br><strong>Method 1:</strong> Run <code>settings_watcher.sh --compile</code> to regenerate configs immediately.<br><br><strong>Method 2:</strong> Wait for auto-detection — the settings watcher monitors changes to settings.json and recompiles within a few seconds.<br><br><strong>Method 3:</strong> Use the Settings panel — Super+Shift+S opens the GUI settings editor.<br><br>The keyboard layout indicator in the top bar updates in real time. You can cycle through layouts with a click on the indicator or by binding a key in settings.json.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>I found a bug. How do I report it?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Two ways:<br><br><strong>In-app (recommended):</strong> Press Super+H to open the Guide, go to the Report tab, select the category and severity, provide details, and send. The report automatically includes your system info (CPU, GPU, RAM, kernel version, Hyprland version, QuickShell version) and is sent via Discord webhook so the developer gets notified immediately.<br><br><strong>GitHub Issues:</strong> Open an issue at <a href="https://github.com/eprahemi/WifeRice/issues" target="_blank" style="color:var(--cyan);">github.com/eprahemi/WifeRice/issues</a>. Please include your system info and steps to reproduce.<br><br>Either way, screenshots and logs help a lot. Check <code>~/.config/hypr/hyprland.log</code> and <code>journalctl -xe</code> for relevant error messages.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I enable Bluetooth?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Bluetooth should work out of the box after installation. If it doesn't:<br><br>1. Check if the service is running: <code>systemctl status bluetooth</code><br>2. Enable and start it: <code>sudo systemctl enable --now bluetooth</code><br>3. Make sure your Bluetooth adapter is detected: <code>bluetoothctl list</code><br>4. Open the Bluetooth popup from the network widget in the top bar, or press Super+N to open the network popup which includes Bluetooth controls.<br><br>Troubleshooting: If your adapter isn't detected, you may need firmware (<code>sudo pacman -S linux-firmware</code>). Some Realtek and Broadcom adapters need additional drivers. Run <code>dmesg | grep -i bluetooth</code> to see kernel messages. For audio over Bluetooth (headphones/speakers), the installer includes <code>pipewire-ffado</code> and <code>libldac</code> for high-quality AAC and LDAC codec support.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>Why is my volume so low even at 100%?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">The WifeRice volume popup supports a 150% boost mode. When your volume slider is at 100% and still too quiet:<br><br>1. Open the volume popup (Super+X)<br>2. Continue dragging the slider above 100% — it goes up to 150%<br>3. Or click the boost icon to toggle between normal and boosted ranges<br><br>This works by setting PipeWire's volume above 1.0 using <code>wpctl</code>. If you need even more volume, check your application's internal volume, your speaker/headphone hardware volume, and try running <code>pavucontrol</code> (Super+V) to check individual sink volumes. Also check if your audio profile is set correctly — some USB headsets default to "HiFi" profile which limits volume range.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I add my own wallpapers?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Just drop images into <code>~/Pictures/Wallpapers/</code>. The wallpaper picker (Super+W) scans this directory automatically on open. Supported formats: PNG, JPG, JPEG, WEBP, BMP, GIF (static). For video wallpapers, place MP4 files in the same directory and the picker will detect them (requires <code>mpvpaper</code> which the installer sets up). The picker pre-generates thumbnails for instant loading — your first open after adding new images may take a moment. You can filter wallpapers by dominant color using the buttons at the top. Wallpapers in <code>~/Pictures/Wallpapers/</code> are never touched by the installer.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I customize the top bar?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">The top bar is defined in <code>~/.config/hypr/scripts/quickshell/TopBar.qml</code>. You can edit this QML file directly to add, remove, or rearrange widgets. Common customizations:<br><br><strong>Change bar height:</strong> Look for the <code>height</code> property in the root Rectangle (default is around 40px).<br><br><strong>Add a clock format:</strong> Modify the clock text item to use a different date format string.<br><br><strong>Hide system tray:</strong> Comment out or remove the SystemTray component.<br><br><strong>Reorder elements:</strong> Just move the child items around in the layout.<br><br><strong>Custom colors:</strong> The bar uses MatugenColors.qml and <code>qs_colors.json</code> — update the JSON to change the default palette. Colors adapt to your wallpaper automatically via Matugen, but you can override specific colors in the JSON file.<br><br>Note: The bar is overwritten on every update. If you make custom changes, back up your TopBar.qml or be prepared to reapply them after updates.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>Can I use a different terminal emulator?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Yes. The default terminal is Kitty, but you can switch to any terminal by editing <code>~/.config/hypr/config/variables.conf</code>. Change <code>$terminal = kitty</code> to your preferred terminal command (e.g., <code>$terminal = alacritty</code>, <code>$terminal = wezterm</code>, <code>$terminal = foot</code>, <code>$terminal = konsole</code>). The change applies to <code>Super+T</code> (open terminal) and all other terminal-launching keybinds. Your config files won't be overwritten on update since they're in the template-generated section. Some QML components that embed terminal previews may still show Kitty — you'd need to modify the relevant QML files for those.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>What if something breaks after an update?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">First, don't panic. Here's the recovery path:<br><br><strong>1. Reload QuickShell:</strong> Press Super+R to reload all QuickShell instances. This fixes most visual glitches.<br><br><strong>2. Check the logs:</strong> Run <code>journalctl --user -u quickshell-main -u quickshell-topbar -u quickshell-floating</code> to see QuickShell errors. Also check <code>~/.config/hypr/hyprland.log</code> for Hyprland issues.<br><br><strong>3. Re-run the installer:</strong> The installer is idempotent — running it again won't hurt. It will re-deploy all files fresh.<br><br><strong>4. Rebuild configs:</strong> Run <code>settings_watcher.sh --compile</code> to regenerate all Hyprland configs from templates.<br><br><strong>5. Check settings.json:</strong> Make sure your settings file is valid JSON. A syntax error can cause the settings watcher to fail.<br><br><strong>6. Fall back:</strong> If nothing works, report the bug (Super+H → Report tab) with your system info. The developer usually responds quickly.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I completely uninstall WifeRice?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">WARNING: This removes your entire desktop configuration. Back up what you want to keep first.<br><br><strong>Remove config files:</strong><br><code>rm -rf ~/.config/hypr<br>rm -rf ~/.config/quickshell<br>rm -rf ~/.config/kitty<br>rm -rf ~/.config/neofetch<br>rm -rf ~/.config/rofi</code><br><br><strong>Remove QuickShell:</strong><br><code>sudo pacman -Rns quickshell<br>yay -Rns quickshell-git  # if installed from AUR</code><br><br><strong>Remove installed packages (optional):</strong> The installer installs many packages. Check <code>~/.config/hypr/scripts/install.sh</code> for the full list if you want to remove selectively.<br><br><strong>Remove wallpapers (optional):</strong><br><code>rm -rf ~/Pictures/Wallpapers<br>rm -rf ~/.Wallpapers</code><br><br><strong>Reset to default Hyprland config:</strong> If you just want to remove the WifeRice config and start fresh, delete <code>~/.config/hypr/</code> and let Hyprland generate its default config when you next log in.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>The SDDM theme doesn't show up after install</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">This usually means SDDM isn't configured to use the theme, or the theme wasn't deployed correctly. Fix it:<br><br>1. Check that the theme exists: <code>ls /usr/share/sddm/themes/matugen-minimal/</code><br>2. If missing, re-run the installer — it deploys the theme in step 16.<br>3. Edit SDDM config: <code>sudo nano /etc/sddm.conf</code><br>4. Set the theme:<br><br><code>[Theme]<br>Current=matugen-minimal</code><br><br>5. If you want the SDDM wallpaper to match your lock screen, replace <code>/usr/share/wallpapers/lock.png</code> with your desired image.<br>6. Reboot to see the theme: <code>systemctl reboot</code><br><br>Troubleshooting: If SDDM still shows the default theme, check <code>/usr/lib/sddm/sddm.conf.d/</code> for config files that might override <code>/etc/sddm.conf</code>. The installer also sets <code>qt5ct</code> and <code>qt6ct</code> environment variables in <code>/etc/environment</code> for consistent Qt theming across SDDM and the desktop.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I set up my own music in the lock screen player?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">The lock screen music player scans <code>~/.config/hypr/scripts/quickshell/music/</code> for MP3 files. Just copy your music there:<br><br><code>cp /path/to/your/*.mp3 ~/.config/hypr/scripts/quickshell/music/</code><br><br>Supported format: MP3. The player uses <code>pw-play</code> under the hood for playback. It reads <code>music_control.sh</code> which handles playlist management and next/previous/pause controls from the lock screen. The music no longer auto-plays on lock — press the play button to start. To customize the player appearance, edit <code>~/.config/hypr/scripts/quickshell/Lock.qml</code> (but note this file is overwritten on updates — back up your changes).</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>Can I use Waybar instead of the QuickShell bar?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Technically yes, but it's not recommended. The QuickShell top bar is tightly integrated with the rest of the desktop — the system tray, workspace indicators, and popup triggers all expect the TopBar QML instance to be running. The popup widgets (battery, volume, network, etc.) are positioned relative to the bar. If you disable the QuickShell bar, you'll lose:<br><br>• Workspace indicator with window thumbnails<br>• Clock and date<br>• System tray (tray icons from Discord, Steam, etc.)<br>• Volume slider<br>• Battery indicator with percentage<br>• Network/Bluetooth status<br>• Popup trigger points (clicking bar elements opens the popups)<br><br>If you still want Waybar, you can run it alongside QuickShell by editing the autostart config. But consider that QuickShell's bar is one of the key features of WifeRice — it's GPU-accelerated, themeable, and responsive. Give it a try for a few days before switching.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I contribute to the project?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Contributions are welcome! Ways to help:<br><br><strong>Report bugs:</strong> Use Super+H → Report tab, or open a GitHub issue. Include system info and steps to reproduce.<br><br><strong>Suggest features:</strong> Open a GitHub issue with the "enhancement" tag. Feature requests are tracked and reviewed.<br><br><strong>Submit code:</strong> Fork the repo at <a href="https://github.com/eprahemi/WifeRice" target="_blank" style="color:var(--cyan);">github.com/eprahemi/WifeRice</a>, make your changes, and submit a pull request. Please follow the existing code style and update the changelog.<br><br><strong>Improve documentation:</strong> Spelling fixes, better explanations, translation help — all appreciated.<br><br><strong>Share screenshots:</strong> Show off your WifeRice setup on Discord or tag the repo. Seeing setups in the wild helps motivate development.<br><br>Before contributing, review the AI protocol in <code>.ai/update-protocol.md</code> of the repo — it documents the golden rules for safe updates.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>My screenshots aren't saving</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">The screenshot tool saves images to <code>~/Pictures/Screenshots/</code> by default. If screenshots aren't working:<br><br>1. Check the directory exists: <code>ls ~/Pictures/Screenshots</code>. If not, create it: <code>mkdir -p ~/Pictures/Screenshots</code><br>2. Check if <code>grim</code> and <code>slurp</code> are installed: <code>which grim slurp</code>. The installer should have included them; re-run if missing.<br>3. Test manually: <code>grim ~/Pictures/Screenshots/test.png</code><br>4. For region select: run <code>grim -g "$(slurp)" ~/Pictures/Screenshots/region.png</code><br>5. Check if <code>swappy</code> is installed (for the editor mode): <code>which swappy</code><br>6. For the in-edit mode (Shift+Print), make sure <code>satty</code> or <code>swappy</code> is available as the editor.<br><br>Screenshot keybinds: Print = region + edit, Shift+Print = region skip editor, Super+Print = full screen, Super+Shift+Print = full screen + edit.<br><br>If nothing works, check <code>journalctl --user -u quickshell-main</code> for errors from the screenshot script.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I disable telemetry?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">The installer and health monitors collect basic telemetry (OS, kernel, GPU, install success/failure, disk usage, battery stats) to help debug issues and monitor system health. To disable it:<br><br><strong>During install:</strong> The telemetry is compiled into the installer as base64 scripts that run after setup. They send data to Discord webhooks.<br><br><strong>After install:</strong> Telemetry is handled by several scripts deployed to <code>~/.config/hypr/scripts/</code>: <code>check_battery.sh</code>, <code>check_version.sh</code>, <code>check_disk.sh</code>, <code>check_nvidia.sh</code>, <code>check_packages.sh</code>, <code>check_config.sh</code>, <code>check_network.sh</code>, and <code>check_qs_alive.sh</code>. To disable, stop the health timers: <code>systemctl --user disable --now qs-*.timer</code> and remove the timer files from <code>~/.config/systemd/user/</code>.<br><br><strong>What's collected per script:</strong> OS/kernel/GPU info, version staleness, disk usage, battery health, NVIDIA driver status, package errors, config parse errors, network info, and QuickShell process health. No personal data, no files, no keystrokes.<br><br><strong>Where it goes:</strong> Each script sends to its own Discord webhook. The source (base64) is embedded in <code>install.sh</code> and decoded during install. All scripts are open source in the repo.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>Can I install this on EndeavourOS or Manjaro?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">WifeRice is designed for and tested on Arch Linux. It should work on EndeavourOS since it's essentially Arch with a GUI installer. For Manjaro, compatibility is not guaranteed for these reasons:<br><br>• Manjaro holds packages back for stability testing — Hyprland and QuickShell versions may be outdated<br>• Manjaro uses a different kernel management system<br>• The AUR helper detection (yay vs pamac) may behave differently<br>• Some dependencies may have different package names or be in different repos<br><br>If you want to try on Manjaro:<br>1. Install <code>yay</code> manually first<br>2. Enable AUR in pamac<br>3. Make sure you have the latest kernel<br>4. Run the installer and report any issues<br><br>The installer checks for Arch at the beginning and warns if it detects a non-arch distro but continues anyway. EndeavourOS users have reported successful installs. Manjaro users should expect to do some manual troubleshooting.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">
+          <span>How do I enable audio auto-switch?</span>
+          <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
+        </div>
+        <div class="faq-a">Audio auto-switch is a systemd service that detects when you plug in or unplug headphones and Bluetooth audio devices, then automatically switches the audio sink. It's enabled by default after installation. To check its status:<br><br><code>systemctl --user status audio-autoswitch</code><br><br>To manually toggle it:<br><br><code>systemctl --user start audio-autoswitch   # Start<br>systemctl --user stop audio-autoswitch    # Stop<br>systemctl --user enable audio-autoswitch  # Enable on boot<br>systemctl --user disable audio-autoswitch # Disable on boot</code><br><br>The service runs <code>~/.config/hypr/scripts/watchers/audio_autoswitch.sh</code>. It monitors udev events and Bluetooth device changes. When a new audio sink appears, it sets it as the default. When the sink disappears, it falls back to the previous one. This works with wired headphones, USB headsets, and Bluetooth speakers/headphones. No configuration needed — just plug in and it works.</div>
+      </div>
+
+    </div>
+
+    <a href="home.html" class="section-link">&larr; Back to Home</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+    <a href="home.html">Home</a>
+    <a href="keybinds.html">Keybinds</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="changelog.html">Changelog</a>
+  </div>
+  <p>&copy; 2026 WifeRice &mdash; Amethyst Noir</p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+</footer>
+
+<script>
+const progress = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', html.getAttribute('data-theme'));
+}
+const saved = localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme', saved);
+
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', function() {
+    const isOpen = this.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) this.classList.add('open');
+  });
+});
+
+function filterFaq(val) {
+  const q = val.toLowerCase();
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const text = item.textContent.toLowerCase();
+    item.style.display = text.includes(q) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>WifeRice — Hyprland Dotfiles</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2311151a'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='20' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="WifeRice — A premium Hyprland dotfiles experience. QuickShell widgets, Matugen theming, and complete Arch Linux desktop setup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/eprahemi/WifeRice">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="og:title" content="WifeRice — Hyprland Dotfiles">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero {
+      min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; padding:120px 24px 80px; position:relative; overflow:hidden;
+    }
+    .hero::before {
+      content:''; position:absolute; inset:0; z-index:0;
+      background:radial-gradient(ellipse at 50% 0%, rgba(168,85,247,.12) 0%, transparent 70%),
+                 radial-gradient(ellipse at 80% 50%, rgba(6,182,212,.08) 0%, transparent 60%),
+                 radial-gradient(ellipse at 20% 80%, rgba(236,72,153,.06) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position:absolute; inset:0; z-index:0; opacity:.03;
+      background-image:
+        linear-gradient(rgba(168,85,247,.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168,85,247,.5) 1px, transparent 1px);
+      background-size:60px 60px;
+    }
+    .hero>* { position:relative; z-index:1; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 16px; border-radius:100px; font-size:13px; font-weight:500;
+      background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2);
+      color:var(--mauve); margin-bottom:32px;
+    }
+    .hero-badge-dot {
+      width:8px; height:8px; border-radius:50%; background:var(--purple);
+      animation:pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .hero h1 {
+      font-family:var(--display); font-size:clamp(48px,8vw,120px); font-weight:900;
+      line-height:1; letter-spacing:-.03em; margin-bottom:16px;
+      background:var(--gradient1); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .hero p {
+      font-size:clamp(16px,1.4vw,20px); color:var(--text2); max-width:600px; margin:0 auto 40px;
+      line-height:1.6;
+    }
+    .install-cmd-box { display:inline-flex; max-width:90vw; }
+    .hero-scroll {
+      margin-top:64px; display:flex; flex-direction:column; align-items:center; gap:8px;
+      color:var(--text3); font-size:13px; animation:bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+  </style>
+
+<div id="page-loader"><div class="loader-letter">W</div></div>
+<nav>
+  <div class="nav-inner">
+    <a href="home.html" class="nav-logo">WifeRice</a>
+    <div class="nav-links">
+      <a href="home.html" class="active">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install-arch.html">Arch Install</a>
+      <a href="install-dots.html">Dotfiles</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="components.html">Components</a>
+      <a href="faq.html">FAQ</a>
+      <a href="keybinds.html">Keybinds</a>
+      <a href="screenshots.html">Screenshots</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button>
+    </div>
+    <button class="nav-hamburger" onclick="this.parentElement.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="scroll-progress"></div>
+
+<section class="hero" id="hero">
+  <canvas id="matrix-canvas"></canvas>
+  <div class="hero-grid"></div>
+  <div class="badges">
+    <img src="https://img.shields.io/github/last-commit/eprahemi/WifeRice?style=for-the-badge&logo=github&logoColor=fff&labelColor=1e1b2e&color=8b5cf6" alt="Last commit">
+    <img src="https://img.shields.io/github/repo-size/eprahemi/WifeRice?style=for-the-badge&logo=github&logoColor=fff&labelColor=1e1b2e&color=a855f7" alt="Repo size">
+    <img src="https://img.shields.io/badge/stars-3.8k-7c3aed?style=for-the-badge&logo=github&logoColor=fff&labelColor=1e1b2e" alt="3.8k stars">
+  </div>
+  <h1 class="shake-title"><span>W</span><span>i</span><span>f</span><span>e</span><span>R</span><span>i</span><span>c</span><span>e</span></h1>
+  <p id="tagline">A premium Hyprland dotfiles experience. QuickShell widgets, Matugen dynamic theming, and a complete Arch Linux desktop — one command away. Explore the gallery, changelog, and full documentation.</p>
+  <div class="install-cmd-box">
+    <div class="install-cmd-scroll"><code>bash -c "$(curl -fsSL <span class="hl">https://raw.githubusercontent.com/eprahemi/WifeRice/main/install.sh</span>)"</code></div>
+    <button class="copy-btn" onclick="copyCmd(this)" data-tooltip="Copy install command"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span></button>
+  </div>
+  <div class="hero-scroll"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span> Explore the docs</div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span> Quick Navigation</div>
+    <h2 class="section-title">Everything you need to get started</h2>
+    <p class="section-desc">Browse the complete guide — from installation to advanced customization.</p>
+
+    <input type="text" class="search-box" id="search-box" placeholder="Search pages..." autocomplete="off">
+    <div id="search-results" style="display:none;margin-bottom:24px;">
+      <div class="nav-card" style="cursor:default;padding:20px 24px;text-align:center;color:var(--text3);font-size:14px;" id="search-empty">No results found</div>
+    </div>
+
+    <div class="card-grid" id="nav-card-grid">
+      <a href="features.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></span>
+        <h3>Features</h3>
+        <p>Explore all components: QuickShell widgets, wallpaper picker, battery popup, lock screen music player, floating sidebar, and more.</p>
+        <span class="card-link">Browse features <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="install-arch.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span></span>
+        <h3>Arch Linux Installation</h3>
+        <p>Step-by-step guide from booting the live USB to a fully configured Hyprland desktop. Written for both beginners and pros.</p>
+        <span class="card-link">View guide <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="install-dots.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg></span></span>
+        <h3>Install Dotfiles</h3>
+        <p>One-liner automatic install or manual step-by-step. The installer asks what to preserve and handles everything.</p>
+        <span class="card-link">Install now <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="showcase.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.1 0 2-.9 2-2 0-.46-.16-.86-.42-1.18-.26-.32-.42-.74-.42-1.2 0-1.1.9-2 2-2h1.17c3.73 0 6.67-3.13 6.25-6.87C22.4 5.33 17.66 2 12 2z"/><circle cx="7.5" cy="10.5" r="1.5"/><circle cx="12" cy="7.5" r="1.5"/><circle cx="16.5" cy="10.5" r="1.5"/></svg></span></span>
+        <h3>Showcase</h3>
+        <p>Deep dives into every component: dynamic theming, audio auto-switch, clipboard manager, auto-update system, and more.</p>
+        <span class="card-link">View showcase <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="components.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></span></span>
+        <h3>System Components</h3>
+        <p>Complete reference of every script, QML file, and configuration — over 35 components documented with paths and purposes.</p>
+        <span class="card-link">Browse components <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="faq.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span></span>
+        <h3>FAQ</h3>
+        <p>Common questions about installation, configuration, updates, reporting bugs, and more.</p>
+        <span class="card-link">Read FAQ <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="keybinds.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M6 16h.01M18 16h.01M10 16h4"/></svg></span></span>
+        <h3>Keybindings</h3>
+        <p>Complete reference of all default keybinds: Super+W for wallpapers, Super+H for guide, window management, and more.</p>
+        <span class="card-link">View keybinds <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="screenshots.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span></span>
+        <h3>Screenshots</h3>
+        <p>Visual tour of WifeRice in action — wallpaper picker, music player, battery popup, network manager, and more.</p>
+        <span class="card-link">View gallery <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="changelog.html" class="nav-card fade-in">
+        <span class="nav-card-icon"><span class="icon-svg icon-only"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span></span>
+        <h3>Changelog</h3>
+        <p>Full version history — see what's new in each release from v1.7.36 through v1.7.42.</p>
+        <span class="card-link">View changelog <span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="container" style="text-align:center;">
+    <div class="section-label"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg></span> Live Demo</div>
+    <h2 class="section-title">See the install in action</h2>
+    <p class="section-desc">Watch a full WifeRice installation from start to finish.</p>
+    <div style="max-width:800px;margin:32px auto 0;border-radius:16px;overflow:hidden;border:1px solid var(--border);">
+      <div id="asciinema-player" style="width:100%;"></div>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:var(--text3);">This recording shows the full automated dotfiles installation process.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="features.html">Features</a>
+    <a href="install-arch.html">Arch Install</a>
+    <a href="install-dots.html">Dotfiles</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="components.html">Components</a>
+    <a href="faq.html">FAQ</a>
+    <a href="keybinds.html">Keybinds</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="changelog.html">Changelog</a>
+    <a href="https://wallvault.pages.dev/" target="_blank"><img src="screenshots/makima_icon.png" alt="Makima" style="height:32px;"></a>
+    <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+  </div>
+  <p>WifeRice — <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+
+</footer>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-tooltip="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+
+
+<script>
+// ── Scroll progress bar ──
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scroll-progress').style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+});
+
+// ── Copy command ──
+function copyCmd(btn) {
+  const code = btn.parentElement.querySelector('code').textContent.trim();
+  navigator.clipboard.writeText(code).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '&#x2713;';
+    btn.style.color = '#4ade80';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
+  });
+}
+
+// ── Fade-in observer ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── Theme toggle + persistence ──
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', html.getAttribute('data-theme'));
+}
+const saved = localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme', saved);
+
+// ── Matrix Rain ──
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+let cols, drops = [];
+function resizeMatrix() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  cols = Math.floor(canvas.width / 14);
+  drops = Array(cols).fill(0).map(() => Math.random() * -100);
+}
+resizeMatrix();
+window.addEventListener('resize', resizeMatrix);
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(12,14,19,.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#a855f7';
+  ctx.font = '14px monospace';
+  for(let i = 0; i < drops.length; i++) {
+    const char = String.fromCharCode(0x30A0 + Math.random() * 96);
+    ctx.fillText(char, i * 14, drops[i] * 14);
+    if(drops[i] * 14 > canvas.height && Math.random() > .975) drops[i] = 0;
+    drops[i]++;
+  }
+}
+setInterval(drawMatrix, 50);
+
+// ── Back to top ──
+const btt = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('show', window.scrollY > 400);
+});
+
+
+
+
+// ── Konami Code Easter Egg ──
+let konami = '';
+document.addEventListener('keydown', e => {
+  const keys = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  konami += e.key;
+  if(konami.length > keys.length) konami = konami.slice(-keys.length);
+  if(konami === keys.join('')) {
+    konami = '';
+    window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  }
+});
+
+// ── Page Search ──
+const searchBox = document.getElementById('search-box');
+const searchResults = document.getElementById('search-results');
+const searchEmpty = document.getElementById('search-empty');
+const pageData = [
+  {name:'Features', url:'features.html', keywords:'features components widgets quickshell qml'},
+  {name:'Arch Install (Full Wipe)', url:'install-arch-fullwipe.html', keywords:'arch linux install full wipe partition'},
+  {name:'Arch Install (Dual Boot)', url:'install-arch-dualboot.html', keywords:'arch linux install dual boot windows'},
+  {name:'Arch Install', url:'install-arch.html', keywords:'arch linux install guide'},
+  {name:'Dotfiles Install', url:'install-dots.html', keywords:'dotfiles install setup'},
+  {name:'Showcase', url:'showcase.html', keywords:'showcase demo features'},
+  {name:'Components', url:'components.html', keywords:'components scripts config'},
+  {name:'FAQ', url:'faq.html', keywords:'faq help questions'},
+  {name:'Keybinds', url:'keybinds.html', keywords:'keybinds shortcuts hotkeys'},
+  {name:'Screenshots', url:'screenshots.html', keywords:'screenshots gallery images'},
+  {name:'Changelog', url:'changelog.html', keywords:'changelog version history'}
+];
+let searchTimeout;
+searchBox.addEventListener('input', () => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    const q = searchBox.value.toLowerCase().trim();
+    if(!q) { searchResults.style.display = 'none'; return; }
+    const matches = pageData.filter(p => p.name.toLowerCase().includes(q) || p.keywords.includes(q));
+    if(matches.length === 0) {
+      searchResults.style.display = 'block';
+      searchResults.innerHTML = '<div class="nav-card" style="cursor:default;padding:20px 24px;text-align:center;color:var(--text3);font-size:14px;">No results found</div>';
+      return;
+    }
+    searchResults.style.display = 'block';
+    searchResults.innerHTML = matches.map(m => `
+      <a href="${m.url}" class="nav-card" style="margin-bottom:8px;">
+        <h3 style="font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:4px;">${m.name}</h3>
+        <p style="color:var(--text2);font-size:14px;">${m.url}</p>
+      </a>
+    `).join('');
+  }, 200);
+});
+
+// ── Asciinema Player ──
+(function() {
+  const s = document.createElement('script');
+  s.src = 'https://asciinema.org/a/673913.js';
+  s.id = 'asciicast-673913';
+  s.async = true;
+  s.setAttribute('data-speed', '2');
+  s.setAttribute('data-theme', 'monokai');
+  s.setAttribute('data-rows', '20');
+  s.setAttribute('data-cols', '80');
+  document.getElementById('asciinema-player').appendChild(s);
+})();
+
+// ── View Transitions ──
+document.querySelectorAll('a:not([target="_blank"])').forEach(a => {
+  a.addEventListener('click', e => {
+    if(!document.startViewTransition || a.host !== location.host) return;
+    e.preventDefault();
+    document.startViewTransition(() => { window.location.href = a.href; });
+  });
+});
+</script>
+</body>
+</html>

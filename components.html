@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>System Components — WifeRice</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2311151a'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='20' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="WifeRice system components — every script, service, and configuration file explained.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/eprahemi/WifeRice">
+  <meta property="og:title" content="System Components — WifeRice">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="System Components — WifeRice">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .table-wrap table { min-width:640px; }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="home.html" class="nav-logo">WifeRice</a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install-arch.html">Arch Install</a>
+      <a href="install-dots.html">Dotfiles</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="components.html" class="active">Components</a>
+      <a href="faq.html">FAQ</a>
+      <a href="keybinds.html">Keybinds</a>
+      <a href="screenshots.html">Screenshots</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button>
+    </div>
+    <button class="nav-hamburger" onclick="this.parentElement.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero-mini">
+  <h1>System Components</h1>
+  <p>Every script, service, and configuration file explained.</p>
+</section>
+
+<section>
+    <div class="container">
+    <input type="text" class="search-box" id="component-search" placeholder="Search components..." oninput="filterComponents(this.value)">
+    <div class="table-wrap fade-in">
+      <table class="comparison-table">
+        <thead><tr><th>Component</th><th>Path</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Main overlay</td><td>quickshell/Main.qml</td><td>Master overlay window — hosts all popups, notifications, and widgets</td></tr>
+          <tr><td>Top Bar</td><td>quickshell/TopBar.qml</td><td>Multi-monitor horizontal bar with workspaces, clock, system tray, volume, battery, network, KB layout</td></tr>
+          <tr><td>Floating Sidebar</td><td>quickshell/Floating.qml</td><td>Right-edge floating sidebar with quick actions and system stats</td></tr>
+          <tr><td>Lock Screen</td><td>quickshell/Lock.qml</td><td>2361-line full-screen lock UI with clock, music player, and PAM auth</td></tr>
+          <tr><td>Config Singleton</td><td>quickshell/Config.qml</td><td>Shared utilities for all widgets: path resolution, JSON I/O, bash execution</td></tr>
+          <tr><td>Scaler</td><td>quickshell/Scaler.qml</td><td>Responsive scaling system based on screen width</td></tr>
+          <tr><td>Matugen Colors</td><td>quickshell/MatugenColors.qml</td><td>Material You color extraction — reads matugen output into QML properties</td></tr>
+          <tr><td>Wallpaper Picker</td><td>quickshell/wallpaper/WallpaperPicker.qml</td><td>Horizontal wallpaper browser with color filters, video previews, and one-click apply</td></tr>
+          <tr><td>Guide Popup</td><td>quickshell/guide/GuidePopup.qml</td><td>Keybinding reference, system info, and recent changes changelog</td></tr>
+          <tr><td>Updater Popup</td><td>quickshell/updater/UpdaterPopup.qml</td><td>Release notes and update button when new version is available</td></tr>
+          <tr><td>App Launcher</td><td>quickshell/applauncher/</td><td>Application launcher popup</td></tr>
+          <tr><td>Battery Popup</td><td>quickshell/battery/</td><td>Battery status with liquid animations, drag brightness, profile theming</td></tr>
+          <tr><td>Volume Popup</td><td>quickshell/volume/</td><td>Volume slider with 150% boost mode, sink selection</td></tr>
+          <tr><td>Network Popup</td><td>quickshell/network/</td><td>WiFi toggle, SSID display, connection management</td></tr>
+          <tr><td>Bluetooth Popup</td><td>quickshell/network/</td><td>Bluetooth device scanning and connection</td></tr>
+          <tr><td>Calendar/Weather</td><td>quickshell/calendar/</td><td>Calendar with weather overlay (requires .env config)</td></tr>
+          <tr><td>Clipboard Manager</td><td>quickshell/clipboard/</td><td>Clipboard history browser</td></tr>
+          <tr><td>Music Player</td><td>quickshell/music/</td><td>Local MP3 player with playlist navigation</td></tr>
+          <tr><td>Settings Panel</td><td>quickshell/settings/</td><td>GUI settings editor for hyprland configuration</td></tr>
+          <tr><td>Notifications</td><td>quickshell/notifications/</td><td>Notification center with history</td></tr>
+          <tr><td>Quick Actions</td><td>quickshell/quickactions/</td><td>System toggle buttons (WiFi, Bluetooth, Dark Mode, etc.)</td></tr>
+          <tr><td>Focus Timer</td><td>quickshell/focustime/</td><td>Pomodoro-style focus timer</td></tr>
+          <tr><td>Movies</td><td>quickshell/movies/</td><td>Fun movie/humor popup</td></tr>
+          <tr><td>Monitor Manager</td><td>quickshell/monitors/</td><td>Multi-monitor configuration</td></tr>
+          <tr><td>SDDM Theme</td><td>SDDM/matugen-minimal/</td><td>QtQuick-based SDDM login theme with wallpaper background</td></tr>
+          <tr><td>Audio Auto-Switch</td><td>watchers/audio_autoswitch.sh</td><td>Automatically switches audio sink on headphone/BT plug/unplug</td></tr>
+          <tr><td>Battery Watcher</td><td>watchers/battery_{fetch,wait}.sh</td><td>Battery monitoring, low-battery warnings, 3% auto-suspend</td></tr>
+          <tr><td>Audio Watcher</td><td>watchers/audio_{fetch,wait}.sh</td><td>Volume level monitoring and OSD triggering</td></tr>
+          <tr><td>Network Watcher</td><td>watchers/network_{fetch,wait}.sh</td><td>Network connectivity monitoring</td></tr>
+          <tr><td>Bluetooth Watcher</td><td>watchers/bt_{fetch,wait}.sh</td><td>Bluetooth adapter and device monitoring</td></tr>
+          <tr><td>KB Layout Watcher</td><td>watchers/kb_{fetch,wait}.sh</td><td>Keyboard layout change detection</td></tr>
+          <tr><td>System Fetcher</td><td>watchers/sys_fetcher.sh</td><td>CPU%, RAM%, temperature, network rates</td></tr>
+          <tr><td>Init Script</td><td>scripts/init.sh</td><td>Boot-time wallpaper set, matugen theming, thumbnail cache pruning</td></tr>
+          <tr><td>QS Manager</td><td>scripts/qs_manager.sh</td><td>IPC router: workspace switching, widget toggle, wallpaper prep</td></tr>
+          <tr><td>Settings Watcher</td><td>scripts/settings_watcher.sh</td><td>Regenerates configs from templates on settings.json change</td></tr>
+          <tr><td>Update Notifier</td><td>scripts/update_notifier.sh</td><td>Background daemon: checks GitHub every 10min for updates</td></tr>
+          <tr><td>Screenshot Tool</td><td>scripts/screenshot.sh</td><td>Full screenshot/recording/QR scanning system with GUI overlay</td></tr>
+          <tr><td>Lock Script</td><td>scripts/lock.sh</td><td>Screen locker — launches Lock.qml with music player</td></tr>
+          <tr><td>Workspaces</td><td>quickshell/workspaces.sh</td><td>Hyprland socket listener → /tmp/qs_workspaces.json for top bar</td></tr>
+          <tr><td>Music Controller</td><td>quickshell/music_control.sh</td><td>Lock screen music playback controller (playlist, next/prev, pause)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <a href="home.html" class="section-link">&larr; Back to Home</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+    <a href="https://github.com/eprahemi/WifeRice/blob/main/README.md" target="_blank">README</a>
+    <a href="https://github.com/eprahemi/WifeRice/issues" target="_blank">Issues</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="changelog.html">Changelog</a>
+  </div>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+</footer>
+
+<script>
+const progress = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', html.getAttribute('data-theme'));
+}
+const saved = localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme', saved);
+
+function filterComponents(val) {
+  const q = val.toLowerCase();
+  document.querySelectorAll('.comparison-table tbody tr').forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(q) ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>

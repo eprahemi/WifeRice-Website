@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Full Wipe Install — Arch Linux Guide — WifeRice</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2311151a'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='20' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Full-wipe Arch Linux installation guide — erase everything and install from scratch with WifeRice dotfiles.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/eprahemi/WifeRice">
+  <meta property="og:title" content="Full Wipe Install — Arch Linux Guide — WifeRice">
+  <meta property="og:description" content="Full-wipe Arch Linux installation guide — erase everything and install from scratch with WifeRice dotfiles.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Full Wipe Install — Arch Linux Guide — WifeRice">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .back-link { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:600; color:var(--mauve); transition:gap .3s; }
+    .back-link:hover { gap:12px; }
+    .back-link-pill { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--mauve); background:var(--bg2); padding:8px 14px; border-radius:8px; border:1px solid var(--border); transition:gap .3s; }
+    .back-link-pill:hover { gap:12px; }
+    .section-header { margin-bottom:32px; }
+    .section-header .label { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px; }
+    .section-header .label.wipe { color:var(--pink); }
+    .section-header h2 { font-family:var(--display); font-size:clamp(24px,2.8vw,36px); font-weight:800; margin-bottom:12px; line-height:1.2; color:var(--text); }
+    .section-header p { color:var(--text2); font-size:15px; line-height:1.7; }
+    .tip-box { background:rgba(6,182,212,.08); border:1px solid rgba(6,182,212,.15); border-radius:10px; padding:14px 18px; margin:12px 0; font-size:14px; }
+    .tip-box strong { color:var(--cyan); }
+    .warn-box { background:rgba(236,72,153,.08); border:1px solid rgba(236,72,153,.15); border-radius:10px; padding:14px 18px; margin:12px 0; font-size:14px; }
+    .warn-box strong { color:var(--pink); }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="home.html" class="nav-logo">WifeRice</a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install-arch.html" class="active">Arch Install</a>
+      <a href="install-dots.html">Dotfiles</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="components.html">Components</a>
+      <a href="faq.html">FAQ</a>
+      <a href="keybinds.html">Keybinds</a>
+      <a href="screenshots.html">Screenshots</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button>
+    </div>
+    <button class="nav-hamburger" onclick="this.parentElement.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero-mini">
+  <div style="position:absolute;top:24px;left:24px;z-index:10;">
+    <a href="install-arch.html" class="back-link-pill">&larr; Back</a>
+  </div>
+  <h1>Full Wipe &mdash; Clean Install</h1>
+  <p>Erase everything and install Arch Linux from scratch. Every step explained for beginners.</p>
+</section>
+
+<section>
+  <div class="container narrow">
+
+    <div class="section-header">
+      <div class="label wipe">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+        Full Wipe — Clean Install
+      </div>
+      <h2><span class="icon-svg" style="width:28px;height:28px;vertical-align:-6px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></span> Install Arch on a Blank Disk</h2>
+      <p>This path wipes <strong>everything</strong> on the selected disk and installs Arch Linux from scratch. Use this for a brand-new computer, a virtual machine, or when you want to erase the entire OS and start fresh.</p>
+    </div>
+
+    <div class="warn-box" style="margin-bottom:24px;">
+      <strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span> Planning to dual-boot with Windows?</strong>
+      This guide <strong>wipes the entire disk</strong>. If you want to keep Windows and install Arch alongside it, go back and choose <a href="install-arch-dualboot.html" style="color:var(--cyan);font-weight:700;text-decoration:underline;">GRUB Dual Boot</a> instead.
+    </div>
+
+    <div style="margin-bottom:24px;">
+      <a href="install-arch.html" class="back-link">&larr; Back to Arch Install Guide</a>
+    </div>
+
+    <div class="install-steps">
+
+      <div class="install-step fade-in" id="fw-1">
+        <div class="install-step-header">
+          <div class="install-step-num">1</div>
+          <div class="install-step-title">Download &amp; Boot the Live USB</div>
+        </div>
+        <div class="install-step-body">
+          <p>Go to the official Arch Linux website and download the ISO image. Then write it to a USB drive (at least 2 GB).</p>
+          <pre><code><span class="hl"># Download the latest Arch Linux ISO</span>
+curl -LO https://archlinux.org/releng/releases/2025.03.01/torrent/archlinux-2025.03.01-x86_64.iso.torrent
+
+<span class="hl"># Write the ISO to your USB drive (replace /dev/sdX with your USB device!)</span>
+sudo dd if=archlinux-2025.03.01-x86_64.iso of=/dev/sdX bs=4M status=progress && sync
+
+<span class="hl"># Reboot and boot from the USB, then verify UEFI mode</span>
+ls /sys/firmware/efi/efivars    <span class="hl"># Should list files (UEFI mode)</span></code></pre>
+          <p><strong>Beginner tip:</strong> If the terminal feels scary, use <strong>Balena Etcher</strong> (Windows/macOS/Linux) or <strong>Rufus</strong> (Windows) — they have a nice GUI. When your computer starts, enter the BIOS (usually by pressing F2, F12, DEL, or ESC during boot) and make sure you boot in <strong>UEFI mode</strong>, not Legacy/CSM. If you see a black screen with <code>archiso</code> in the corner, you're good.</p>
+          <div class="tip-box"><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 008.91 14"/></svg></span> Disk naming quick guide:</strong> <code>/dev/nvme0n1</code> = NVMe SSD, <code>/dev/sda</code> = SATA SSD or HDD, <code>/dev/mmcblk0</code> = SD card. Always double-check with <code>lsblk</code> before writing!</div>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-2">
+        <div class="install-step-header">
+          <div class="install-step-num">2</div>
+          <div class="install-step-title">Connect to the Internet</div>
+        </div>
+        <div class="install-step-body">
+          <p>Arch Linux downloads packages during installation, so you need a working internet connection. Wired ethernet usually works automatically.</p>
+          <pre><code><span class="hl"># Test if you already have a connection</span>
+ping -c 3 archlinux.org
+
+<span class="hl"># If you see replies, you're online — skip to Step 3!</span>
+
+<span class="hl"># For WiFi (replace wlan0 with your interface name)</span>
+iwctl
+<span class="hl2">[iwd]#</span> device list                  <span class="hl"># Shows your WiFi adapter name</span>
+<span class="hl2">[iwd]#</span> station wlan0 scan
+<span class="hl2">[iwd]#</span> station wlan0 get-networks     <span class="hl"># Lists available WiFi networks</span>
+<span class="hl2">[iwd]#</span> station wlan0 connect "Your Network Name"
+<span class="hl2">[iwd]#</span> exit
+
+<span class="hl"># Verify again</span>
+ping -c 3 archlinux.org</code></pre>
+          <p><strong>Beginner tip:</strong> WiFi network names are case-sensitive. If your WiFi has a space in the name, put it in quotes. If you don't see any devices in <code>iwctl device list</code>, your WiFi card might need additional firmware &mdash; try <code>sudo modprobe brcmfmac</code> for Broadcom cards, or use a USB tether from your phone as a backup.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-2a">
+        <div class="install-step-header">
+          <div class="install-step-num" style="background:linear-gradient(135deg,#06b6d4,#a855f7);">2a</div>
+          <div class="install-step-title">Quick Install with archinstall (Beginner-Friendly)</div>
+        </div>
+        <div class="install-step-body">
+          <p>Arch Linux includes an official guided installer called <code>archinstall</code>. It replaces steps 3–8 below with a simple menu. If you want to do things manually, skip to Step 3.</p>
+          <pre><code><span class="hl"># After connecting to the internet, simply run:</span>
+archinstall
+
+<span class="hl"># Follow the interactive prompts:</span>
+<span class="hl3">  1. Keyboard layout:  us (or your layout)</span>
+<span class="hl3">  2. Mirror region:    your country (for faster downloads)</span>
+<span class="hl3">  3. Disk config:      "Best-effort default" wipes the whole disk for you</span>
+<span class="hl3">  4. Filesystem:       ext4 or btrfs (ext4 is simpler for beginners)</span>
+<span class="hl3">  5. Root password:    set a strong one</span>
+<span class="hl3">  6. User account:     create your daily-driver user</span>
+<span class="hl3">  7. Profile:          "desktop" → "Hyprland" (or skip, install later)</span>
+<span class="hl3">  8. Audio:            pipewire (best choice)</span>
+<span class="hl3">  9. Network:          NetworkManager</span>
+<span class="hl3"> 10. bootloader:       GRUB</span></code></pre>
+          <p>After archinstall finishes, type <code>reboot</code>, remove the USB, log in, connect to WiFi with <code>nmcli</code>, then skip ahead to <strong>Step 9</strong> (GPU Drivers) and <strong>Step 10</strong> (Dotfiles).</p>
+          <p><strong>Why use archinstall?</strong> It handles partitioning, filesystem creation, base package installation, locale setup, and bootloader configuration automatically. It's the fastest way to get a working base system.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-3">
+        <div class="install-step-header">
+          <div class="install-step-num">3</div>
+          <div class="install-step-title">Partition the Disk (Full Wipe)</div>
+        </div>
+        <div class="install-step-body">
+          <p>Since we're wiping the entire disk, we'll create a fresh GPT partition table with three partitions: EFI (for the bootloader), optional swap, and root (everything else).</p>
+          <pre><code><span class="hl"># List all disks to find yours</span>
+lsblk
+
+<span class="hl"># Example output:</span>
+<span class="hl3"># NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS</span>
+<span class="hl3"># nvme0n1     259:0    0 476.9G  0 disk</span>
+<span class="hl3"># ├─nvme0n1p1 259:1    0   512M  0 part</span>
+<span class="hl3"># └─nvme0n1p2 259:2    0 476.4G  0 part</span>
+
+<span class="hl"># Start partitioning (replace nvme0n1 with YOUR disk)</span>
+gdisk /dev/nvme0n1
+
+<span class="hl3"># Inside gdisk, type these commands in order:</span>
+<span class="hl3">  x     → enter expert mode</span>
+<span class="hl3">  z     → zap (wipe) the partition table</span>
+<span class="hl3">  y     → confirm yes</span>
+<span class="hl3">  y     → confirm MBR wipe</span>
+
+<span class="hl"># Then create partitions:</span>
+gdisk /dev/nvme0n1
+
+<span class="hl3">  o     → create new GPT partition table</span>
+<span class="hl3">  n     → new partition</span>
+<span class="hl3">  Partition 1: +1G       → hex code ef00 (EFI System)</span>
+<span class="hl3">  n     → new partition</span>
+<span class="hl3">  Partition 2: +8G       → hex code 8200 (Linux swap, optional)</span>
+<span class="hl3">  n     → new partition</span>
+<span class="hl3">  Partition 3: [Enter]   → hex code 8300 (Linux filesystem, rest of disk)</span>
+<span class="hl3">  w     → write changes and exit</span>
+<span class="hl3">  y     → confirm</span></code></pre>
+          <div class="warn-box"><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span> DANGER:</strong> This will <strong>erase everything</strong> on the disk you choose. Triple-check with <code>lsblk</code> that you selected the right disk. If you have a laptop with an NVMe drive, the name will be something like <code>nvme0n1</code>. Desktops with SATA SSDs will show as <code>sda</code>, <code>sdb</code>, etc.</div>
+          <p><strong>Do I need swap?</strong> If you have 8 GB or less RAM, add a swap partition (+8G). If you have 16 GB or more, skip it — the system will use a swap file if needed. Swap lets your computer use disk space as extra "memory" when RAM runs out.</p>
+          <p><strong>Simpler alternative:</strong> Use <code>parted</code> instead of gdisk:</p>
+          <pre><code>parted /dev/nvme0n1 -- mklabel gpt
+parted /dev/nvme0n1 -- mkpart ESP fat32 1MiB 1GiB
+parted /dev/nvme0n1 -- set 1 esp on
+parted /dev/nvme0n1 -- mkpart primary linux-swap 1GiB 9GiB   <span class="hl"># skip if no swap</span>
+parted /dev/nvme0n1 -- mkpart primary 9GiB 100%              <span class="hl"># or 1GiB 100% if no swap</span></code></pre>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-4">
+        <div class="install-step-header">
+          <div class="install-step-num">4</div>
+          <div class="install-step-title">Format &amp; Mount</div>
+        </div>
+        <div class="install-step-body">
+          <p>Now we format the partitions we just created with the appropriate filesystems.</p>
+          <pre><code><span class="hl"># Format the EFI partition (must be FAT32)</span>
+mkfs.fat -F32 /dev/nvme0n1p1
+
+<span class="hl"># Format the root partition (ext4 is simple and reliable)</span>
+mkfs.ext4 /dev/nvme0n1p3
+
+<span class="hl3"># Only if you created a swap partition:</span>
+<span class="hl3">mkswap /dev/nvme0n1p2 && swapon /dev/nvme0n1p2</span>
+
+<span class="hl"># Mount root to /mnt</span>
+mount /dev/nvme0n1p3 /mnt
+
+<span class="hl"># Mount EFI to /mnt/boot</span>
+mount --mkdir /dev/nvme0n1p1 /mnt/boot</code></pre>
+          <p><strong>Beginner note:</strong> If you have an NVMe drive, partitions are named <code>nvme0n1p1</code>, <code>nvme0n1p2</code>, etc. For SATA drives, they're <code>sda1</code>, <code>sda2</code>, etc. Adjust the commands above to match your hardware. The EFI partition is always the first one (+1G), and the root partition is the last one (everything else).</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-5">
+        <div class="install-step-header">
+          <div class="install-step-num">5</div>
+          <div class="install-step-title">Install the Base System</div>
+        </div>
+        <div class="install-step-body">
+          <p>This downloads and installs the core Arch Linux packages. The download speed depends on your internet and mirror server.</p>
+          <pre><code><span class="hl"># Optional: Update mirror list for faster downloads (replace "US" with your country)</span>
+reflector --country US --age 6 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+
+<span class="hl"># Install base system + essential packages</span>
+pacstrap -K /mnt base base-devel linux linux-firmware linux-headers
+pacstrap /mnt networkmanager vim sudo git
+
+<span class="hl"># Generate fstab (tells Linux how to mount disks at boot)</span>
+genfstab -U /mnt >> /mnt/etc/fstab
+
+<span class="hl"># Verify fstab</span>
+cat /mnt/etc/fstab</code></pre>
+          <p><strong>What these packages do:</strong> <code>base</code> = the minimal Arch system, <code>base-devel</code> = tools for building packages (needed for AUR later), <code>linux</code> = the kernel, <code>linux-firmware</code> = drivers for WiFi, GPU, and other hardware, <code>networkmanager</code> = handles internet connections, <code>vim</code> = text editor, <code>sudo</code> = lets your user run admin commands, <code>git</code> = needed for downloading dotfiles and AUR packages.</p>
+          <p><strong>Beginner tip:</strong> If you're on a slow connection or limited data, you can skip <code>base-devel</code> (it's about 200 MB extra). Install only what you need and add the rest later.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-6">
+        <div class="install-step-header">
+          <div class="install-step-num">6</div>
+          <div class="install-step-title">Configure the System</div>
+        </div>
+        <div class="install-step-body">
+          <p>Now we enter the newly installed system (chroot) and set up timezone, language, hostname, and passwords.</p>
+          <pre><code><span class="hl"># Enter the new system</span>
+arch-chroot /mnt
+
+<span class="hl"># Set timezone (find yours with: ls /usr/share/zoneinfo/)</span>
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock --systohc
+
+<span class="hl"># Generate locale (language settings)</span>
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
+<span class="hl"># Set hostname (your computer's name on the network)</span>
+echo "myhostname" > /etc/hostname
+
+<span class="hl"># Map hostname to localhost</span>
+cat > /etc/hosts << 'EOF'
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   myhostname.localdomain myhostname
+EOF
+
+<span class="hl"># Set root password (type it twice, nothing will show as you type)</span>
+passwd
+
+<span class="hl"># Enable NetworkManager to start automatically at boot</span>
+systemctl enable NetworkManager</code></pre>
+          <p><strong>Beginner tips:</strong> Replace <code>America/New_York</code> with your timezone &mdash; browse options with <code>ls /usr/share/zoneinfo/</code> then <code>ls /usr/share/zoneinfo/America/</code> (or your continent). Replace <code>myhostname</code> with a name like <code>arch-pc</code> or <code>my-laptop</code> (no spaces, lowercase). When typing passwords in Linux, the screen stays blank &mdash; that's normal, just type and press Enter.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-7">
+        <div class="install-step-header">
+          <div class="install-step-num">7</div>
+          <div class="install-step-title">Install GRUB Bootloader</div>
+        </div>
+        <div class="install-step-body">
+          <p>GRUB is the boot menu that appears when you turn on your computer. We install it to the EFI partition so your motherboard can find it.</p>
+          <pre><code><span class="hl"># Install GRUB and EFI boot manager</span>
+pacman -S grub efibootmgr
+
+<span class="hl"># Install GRUB to the EFI partition</span>
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+
+<span class="hl"># Generate GRUB configuration file</span>
+grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
+          <p><strong>What just happened:</strong> <code>grub-install</code> puts the bootloader files on your EFI partition. <code>grub-mkconfig</code> scans for operating systems and creates the menu you see at boot. If everything worked, you'll see "Installation finished. No error reported."</p>
+          <p><strong>Note for this section:</strong> Since this is a full wipe (single OS), there's no need for os-prober. If you later add another OS, you can re-run os-prober then.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-8">
+        <div class="install-step-header">
+          <div class="install-step-num">8</div>
+          <div class="install-step-title">Create a User Account</div>
+        </div>
+        <div class="install-step-body">
+          <p>Using the root account for everyday tasks is dangerous. Create a regular user with sudo privileges instead.</p>
+          <pre><code><span class="hl"># Create user (replace 'username' with your desired username)</span>
+useradd -m -G wheel,audio,video,storage,power,adbusers username
+
+<span class="hl"># Set password for your new user</span>
+passwd username
+
+<span class="hl"># Give your user sudo (admin) access</span>
+EDITOR=vim visudo
+<span class="hl3"># Uncomment (remove the #) from this line:</span>
+<span class="hl3"># %wheel ALL=(ALL:ALL) ALL</span>
+
+<span class="hl"># Exit chroot, unmount, and reboot</span>
+exit
+umount -R /mnt
+reboot</code></pre>
+          <p><strong>Beginner tip:</strong> <code>visudo</code> opens a file in vim. Press the arrow keys to move down to the line <code># %wheel ALL=(ALL:ALL) ALL</code>, press <code>x</code> to delete the <code>#</code>, then type <code>:wq</code> and press Enter to save and quit. Remove the live USB when the computer restarts. If you see a GRUB menu with "Arch Linux", congratulations &mdash; you installed Arch!</p>
+          <p><strong>After reboot:</strong> Log in with your new username and password. Connect to WiFi with <code>sudo nmcli device wifi connect "Your WiFi" password "yourpassword"</code>. Then continue to Step 9.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-9">
+        <div class="install-step-header">
+          <div class="install-step-num">9</div>
+          <div class="install-step-title">Install GPU Drivers</div>
+        </div>
+        <div class="install-step-body">
+          <p>After your first boot into the new system, you need graphics drivers for your specific GPU. The WifeRice dotfiles installer configures them automatically, but you need them installed first.</p>
+          <pre><code><span class="hl"># Connect to WiFi after reboot</span>
+sudo nmcli device wifi connect "Your WiFi" password "yourpassword"
+<span class="hl3"># For wired ethernet: just plug in, NetworkManager handles it</span>
+
+<span class="hl"># NVIDIA GPUs (desktop & laptop with dedicated NVIDIA)</span>
+sudo pacman -S nvidia nvidia-utils nvidia-settings lib32-nvidia-utils
+
+<span class="hl"># AMD GPUs</span>
+sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon
+
+<span class="hl"># Intel GPUs (integrated graphics)</span>
+sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel
+
+<span class="hl"># Install yay (AUR helper) — needed by the dotfiles installer</span>
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd /tmp/yay && makepkg -si
+rm -rf /tmp/yay</code></pre>
+          <p><strong>Which GPU do I have?</strong> Run <code>lspci | grep -E "VGA|3D"</code> to see your graphics hardware. If you have an NVIDIA Optimus laptop (both Intel + NVIDIA), the WifeRice installer handles GPU switching. For AMD + Intel hybrid laptops, the open-source drivers work out of the box.</p>
+          <p><strong>Beginner tip:</strong> <code>makepkg -si</code> might take a while to compile yay from source. This is normal. If you get errors about missing dependencies, install them with <code>sudo pacman -S &lt;package-name&gt;</code>.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="fw-10">
+        <div class="install-step-header">
+          <div class="install-step-num">10</div>
+          <div class="install-step-title">Install the Dotfiles</div>
+        </div>
+        <div class="install-step-body">
+          <p>This is the final step. The one-liner below installs Hyprland (the window manager), QuickShell (the dashboard), all widgets, wallpapers, the SDDM login theme, applications, and configures your entire desktop.</p>
+          <div class="install-cmd-box">
+            <div class="install-cmd-scroll"><code>bash -c "$(curl -fsSL <span class="hl">https://raw.githubusercontent.com/eprahemi/WifeRice/main/install.sh</span>)"</code></div>
+            <button class="copy-btn" onclick="copyCmd(this)" data-tooltip="Copy install command"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></button>
+          </div>
+          <p>The installer will ask you what to preserve, then:</p>
+          <ul>
+            <li>Install Hyprland, QuickShell, SDDM, and all applications</li>
+            <li>Configure GPU drivers (NVIDIA, AMD, or Intel) automatically</li>
+            <li>Set up wallpapers, lock screen, and the SDDM login theme</li>
+            <li>Install Kitty (terminal), VS Code, Firefox, Spotify, and more</li>
+            <li>Enable systemd services so everything starts at boot</li>
+          </ul>
+          <p><strong>After the installer finishes:</strong> <code>systemctl reboot</code>. When it comes back, you'll see the SDDM login screen. Log in and press <code>Super+W</code> to open the wallpaper picker, <code>Super+H</code> for the keybinding guide.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:48px;">
+      <a href="install-arch.html" class="section-link" style="gap:8px;transition:gap .3s;" onmouseenter="this.style.gap='14px'" onmouseleave="this.style.gap='8px'">&larr; Back to Install Guide</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+    <a href="home.html">Home</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="changelog.html">Changelog</a>
+  </div>
+  <p>WifeRice &mdash; <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scroll-progress').style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+});
+
+function copyCmd(btn) {
+  const code = btn.parentElement.querySelector('code').textContent.trim();
+  navigator.clipboard.writeText(code).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '&#x2713;';
+    btn.style.color = '#4ade80';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
+  });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', html.getAttribute('data-theme'));
+}
+const saved = localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme', saved);
+</script>
+</body>
+</html>

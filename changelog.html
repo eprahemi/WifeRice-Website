@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Changelog — WifeRice Dotfiles</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2311151a'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='20' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="WifeRice version history and changelog — see what's new in each release.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/eprahemi/WifeRice">
+  <meta property="og:title" content="Changelog — WifeRice Dotfiles">
+  <meta property="og:description" content="WifeRice version history and changelog — see what's new in each release.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Changelog — WifeRice Dotfiles">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="home.html" class="nav-logo">WifeRice</a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install-arch.html">Arch Install</a>
+      <a href="install-dots.html">Dotfiles</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="components.html">Components</a>
+      <a href="faq.html">FAQ</a>
+      <a href="keybinds.html">Keybinds</a>
+      <a href="screenshots.html">Screenshots</a>
+      <a href="changelog.html" class="active">Changelog</a>
+      <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button>
+    </div>
+    <button class="nav-hamburger" onclick="this.parentElement.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero-mini">
+  <h1>Changelog</h1>
+  <p>Version history of the WifeRice dotfiles.</p>
+</section>
+
+<section>
+  <div class="container narrow">
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.42 <span class="changelog-date">2026-05-16</span></div>
+      <ul>
+        <li>QuickShell auto-deploy: install.sh now uses rsync to deploy entire quickshell/ directory</li>
+        <li>Deprecated DDG search files removed after rsync</li>
+        <li>Keybinds page on website corrected to match actual keybindings.conf</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.41 <span class="changelog-date">2026-05-15</span></div>
+      <ul>
+        <li>Smart input validation: installer now validates paths and user input</li>
+        <li>Better error messages for missing dependencies</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.40 <span class="changelog-date">2026-05-14</span></div>
+      <ul>
+        <li>Input validation for installer prompts</li>
+        <li>Safe copy patterns (cp -a source/. target/)</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.39 <span class="changelog-date">2026-05-13</span></div>
+      <ul>
+        <li>Changelog history tab added to GuidePopup.qml</li>
+        <li>Recent changes now visible in-app</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.38 <span class="changelog-date">2026-04-20</span></div>
+      <ul>
+        <li>WallpaperPicker color filter improvements</li>
+        <li>Thumbnail cache auto-pruning on open</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.37 <span class="changelog-date">2026-04-10</span></div>
+      <ul>
+        <li>Lock screen music player initial release</li>
+        <li>Local MP3 playback with PAM authentication</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.36 <span class="changelog-date">2026-03-28</span></div>
+      <ul>
+        <li>Floating sidebar with quick actions and system stats</li>
+        <li>Edge hover activation</li>
+      </ul>
+    </div>
+
+    <a href="home.html" class="section-link"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Back to Home</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+    <a href="home.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="install-arch.html">Arch Install</a>
+    <a href="install-dots.html">Dotfiles</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="components.html">Components</a>
+    <a href="faq.html">FAQ</a>
+    <a href="keybinds.html">Keybinds</a>
+  </div>
+  <p>WifeRice — <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+</footer>
+
+<script>
+const progress = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', html.getAttribute('data-theme'));
+}
+const saved = localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme', saved);
+</script>
+</body>
+</html>

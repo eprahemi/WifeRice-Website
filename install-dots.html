@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Install Dotfiles — WifeRice</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2311151a'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='20' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Install WifeRice Hyprland dotfiles — automatic one-liner or manual step-by-step guide.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/eprahemi/WifeRice">
+  <meta property="og:title" content="Install Dotfiles — WifeRice">
+  <meta property="og:description" content="Install WifeRice Hyprland dotfiles — automatic one-liner or manual step-by-step guide.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Install Dotfiles — WifeRice">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="home.html" class="nav-logo">WifeRice</a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install-arch.html">Arch Install</a>
+      <a href="install-dots.html" class="active">Dotfiles</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="components.html">Components</a>
+      <a href="faq.html">FAQ</a>
+      <a href="keybinds.html">Keybinds</a>
+      <a href="screenshots.html">Screenshots</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button>
+    </div>
+    <button class="nav-hamburger" onclick="this.parentElement.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero-mini">
+  <h1>Install Dotfiles</h1>
+  <p>Choose the method that works best for you.</p>
+</section>
+
+<section>
+  <div class="container narrow">
+
+    <div class="install-step fade-in">
+      <div class="install-step-header">
+        <div class="install-step-num">1</div>
+        <div class="install-step-title">One-Click Installer (Recommended)</div>
+      </div>
+      <div class="install-step-body">
+        <p>The one-liner does everything — asks what to preserve, detects your hardware (NVIDIA, AMD, Intel), and installs Hyprland, QuickShell, SDDM, wallpapers, and all required dependencies. This is the same command the update notifier runs, so it works for both fresh installs and updates.</p>
+        <div class="install-cmd-box">
+          <div class="install-cmd-scroll"><code>bash -c "$(curl -fsSL <span class="hl">https://raw.githubusercontent.com/eprahemi/WifeRice/main/install.sh</span>)"</code></div>
+          <button class="copy-btn" onclick="copyCmd(this)" data-tooltip="Copy install command"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="install-step fade-in">
+      <div class="install-step-header">
+        <div class="install-step-num">2</div>
+        <div class="install-step-title">Step-by-Step Manual</div>
+      </div>
+      <div class="install-step-body">
+        <p>Clone the repo and cherry-pick what you need.</p>
+        <div style="position:relative;">
+          <button class="copy-btn" onclick="copyCmdPre(this)" data-tooltip="Copy all commands" style="position:absolute;top:8px;right:8px;z-index:2;"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span></button>
+          <pre><code><span class="hl"># Clone the repository</span>
+git clone --depth 1 https://github.com/eprahemi/WifeRice.git
+
+<span class="hl"># Copy configuration files</span>
+cp -r WifeRice/Hyprland/* ~/.config/hypr/
+
+<span class="hl"># Install QuickShell files</span>
+rsync -a --exclude='.env' WifeRice/Hyprland/scripts/quickshell/ ~/.config/hypr/scripts/quickshell/
+
+<span class="hl"># Set up SDDM theme (optional)</span>
+sudo rm -rf /usr/share/sddm/themes/matugen-minimal
+sudo mkdir -p /usr/share/sddm/themes/matugen-minimal
+sudo cp -r WifeRice/SDDM/matugen-minimal/* /usr/share/sddm/themes/matugen-minimal/
+
+<span class="hl"># Install wallpapers</span>
+cp WifeRice/Wallpapers/* ~/Pictures/Wallpapers/
+sudo cp WifeRice/SDDM-Wallpaper/wallpaper.png /usr/share/wallpapers/lock.png</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--display);font-size:clamp(22px,2vw,28px);font-weight:700;margin:48px 0 16px;display:flex;align-items:center;gap:10px;"><span class="icon-svg" style="width:22px;height:22px;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span> What the Installer Does</h3>
+    <ul style="color:var(--text2);font-size:15px;line-height:1.7;padding-left:20px;display:flex;flex-direction:column;gap:8px;">
+      <li>Asks what to preserve (keybinds, terminal configs, desktop configs, wallpapers, weather, SDDM)</li>
+      <li>Installs Hyprland, QuickShell, SDDM, and all required dependencies</li>
+      <li>Detects and installs GPU drivers (NVIDIA, AMD, Intel)</li>
+      <li>Deploys QuickShell UI files (GuidePopup, WallpaperPicker, Floating sidebar, etc.)</li>
+      <li>Sets up wallpapers: Himeno as default, lock screen, SDDM login theme</li>
+      <li>Pre-generates wallpaper thumbnails for fast picker startup</li>
+      <li>Creates systemd timers for health monitoring</li>
+      <li>Enables audio auto-switch service</li>
+      <li>Writes version info for update detection</li>
+    </ul>
+
+    <h3 style="font-family:var(--display);font-size:clamp(22px,2vw,28px);font-weight:700;margin:48px 0 16px;display:flex;align-items:center;gap:10px;"><span class="icon-svg" style="width:22px;height:22px;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span> Important Notes</h3>
+    <p style="color:var(--text2);font-size:15px;line-height:1.7;">The installer NEVER wipes your existing config. Your <code style="background:var(--bg3);padding:2px 8px;border-radius:4px;font-size:.85em;color:var(--cyan);">settings.json</code> (monitor layout, keybinds, startup apps) is preserved. Your <code style="background:var(--bg3);padding:2px 8px;border-radius:4px;font-size:.85em;color:var(--cyan);">~/.Wallpapers/</code> folder (custom lock screen images) is never touched. Your weather <code style="background:var(--bg3);padding:2px 8px;border-radius:4px;font-size:.85em;color:var(--cyan);">.env</code> config survives updates.</p>
+    <p style="color:var(--text2);font-size:15px;line-height:1.7;margin-top:12px;">After install, reboot and log into SDDM. Press <strong>Super+H</strong> for the guide, <strong>Super+W</strong> for the wallpaper picker.</p>
+
+    <a href="home.html" class="section-link"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Back to Home</a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+    <a href="home.html">Home</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="changelog.html">Changelog</a>
+  </div>
+  <p>WifeRice — <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scroll-progress').style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+});
+
+function copyCmd(btn) {
+  const code = btn.parentElement.querySelector('code').textContent.trim();
+  navigator.clipboard.writeText(code).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '&#x2713;';
+    btn.style.color = '#4ade80';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
+  });
+}
+
+function copyCmdPre(btn) {
+  const code = btn.parentElement.querySelector('code').textContent.trim();
+  navigator.clipboard.writeText(code).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '&#x2713;';
+    btn.style.color = '#4ade80';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
+  });
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', html.getAttribute('data-theme'));
+}
+const saved = localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme', saved);
+</script>
+
+</body>
+</html>

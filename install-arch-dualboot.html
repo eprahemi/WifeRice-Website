@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GRUB Dual Boot — Arch Linux Guide — WifeRice</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2311151a'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='20' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Dual-boot Arch Linux alongside Windows with GRUB. Full step-by-step guide with Windows prerequisites, os-prober setup, and troubleshooting.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/eprahemi/WifeRice">
+  <meta property="og:title" content="GRUB Dual Boot — Arch Linux Guide — WifeRice">
+  <meta property="og:description" content="Dual-boot Arch Linux alongside Windows with GRUB. Full step-by-step guide with Windows prerequisites, os-prober setup, and troubleshooting.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GRUB Dual Boot — Arch Linux Guide — WifeRice">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .back-link { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:600; color:var(--mauve); transition:gap .3s; }
+    .back-link:hover { gap:12px; }
+    .back-link-pill { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--mauve); background:var(--bg2); padding:8px 14px; border-radius:8px; border:1px solid var(--border); transition:gap .3s; }
+    .back-link-pill:hover { gap:12px; }
+    .section-header { margin-bottom:32px; }
+    .section-header .label { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px; }
+    .section-header .label.dual { color:var(--cyan); }
+    .section-header h2 { font-family:var(--display); font-size:clamp(24px,2.8vw,36px); font-weight:800; margin-bottom:12px; line-height:1.2; color:var(--text); }
+    .section-header p { color:var(--text2); font-size:15px; line-height:1.7; }
+    .tip-box { background:rgba(6,182,212,.08); border:1px solid rgba(6,182,212,.15); border-radius:10px; padding:14px 18px; margin:12px 0; font-size:14px; }
+    .tip-box strong { color:var(--cyan); }
+    .warn-box { background:rgba(236,72,153,.08); border:1px solid rgba(236,72,153,.15); border-radius:10px; padding:14px 18px; margin:12px 0; font-size:14px; }
+    .warn-box strong { color:var(--pink); }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="home.html" class="nav-logo">WifeRice</a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install-arch.html" class="active">Arch Install</a>
+      <a href="install-dots.html">Dotfiles</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="components.html">Components</a>
+      <a href="faq.html">FAQ</a>
+      <a href="keybinds.html">Keybinds</a>
+      <a href="screenshots.html">Screenshots</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="icon-svg" style="width:16px;height:16px;"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button>
+    </div>
+    <button class="nav-hamburger" onclick="this.parentElement.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero-mini">
+  <div style="position:absolute;top:24px;left:24px;z-index:10;">
+    <a href="install-arch.html" class="back-link-pill">&larr; Back</a>
+  </div>
+  <h1>GRUB Dual Boot &mdash; Alongside Windows</h1>
+  <p>Keep Windows and add Arch Linux. Every step explained for beginners.</p>
+</section>
+
+<section>
+  <div class="container narrow">
+
+    <div class="section-header">
+      <div class="label dual">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        GRUB Dual Boot — Alongside Windows
+      </div>
+      <h2><span class="icon-svg" style="width:28px;height:28px;vertical-align:-6px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M2 7h20"/></svg></span> Install Arch Alongside Windows</h2>
+      <p>Keep your existing Windows installation intact and add Arch Linux as a second operating system. Every time you boot, GRUB will ask whether you want to start Windows or Arch. <strong>No data loss</strong> &mdash; Windows stays exactly as it is.</p>
+    </div>
+
+    <div style="margin-bottom:24px;">
+      <a href="install-arch.html" class="back-link">&larr; Back to Arch Install Guide</a>
+    </div>
+
+    <div class="install-steps">
+
+      <div class="install-step fade-in" id="db-1">
+        <div class="install-step-header">
+          <div class="install-step-num">1</div>
+          <div class="install-step-title">Windows Prerequisites (Do This First!)</div>
+        </div>
+        <div class="install-step-body">
+          <p>Before touching anything Linux, you need to prepare Windows. Three things must be done:</p>
+
+          <p><strong>1. Disable Fast Boot in Windows</strong></p>
+          <pre><code><span class="hl3">Windows path: Control Panel → Power Options → Choose what the power buttons do</span>
+<span class="hl3">→ "Change settings that are currently unavailable"</span>
+<span class="hl3">→ Uncheck "Turn on fast startup" → Save</span></code></pre>
+          <p>Fast Boot keeps Windows in a hybrid shutdown state that <strong>locks the NTFS partition</strong>. If it's enabled, Linux won't be able to access your Windows files and GRUB may not detect Windows.</p>
+
+          <p><strong>2. Disable Secure Boot in BIOS</strong></p>
+          <pre><code><span class="hl3">Restart your computer → Press F2/DEL/F12 during boot to enter BIOS</span>
+<span class="hl3">→ Find "Secure Boot" (usually under Boot or Security tab)</span>
+<span class="hl3">→ Set it to "Disabled" → Save & Exit</span></code></pre>
+          <p>Secure Boot can block Linux bootloaders. Some motherboards call it "Secure Boot" or "UEFI Secure Boot". If you see a "OS Type" option nearby, set it to "Other OS".</p>
+
+          <p><strong>3. Suspend BitLocker (if enabled)</strong></p>
+          <pre><code><span class="hl3">Windows path: Control Panel → BitLocker Drive Encryption</span>
+<span class="hl3">→ Click "Suspend protection" for your C: drive</span></code></pre>
+          <p>BitLocker encrypts your Windows drive. Linux cannot read encrypted partitions. Suspend it temporarily &mdash; it will resume automatically after you boot back into Windows.</p>
+
+          <div class="warn-box"><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span> Don't skip these!</strong> If you don't disable Fast Boot and Secure Boot, you may end up with a system that can't boot into Windows or Arch. These steps take 2 minutes but save hours of troubleshooting.</div>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-2">
+        <div class="install-step-header">
+          <div class="install-step-num">2</div>
+          <div class="install-step-title">Shrink Windows &amp; Free Up Space for Arch</div>
+        </div>
+        <div class="install-step-body">
+          <p>Arch Linux needs its own space on the disk. We'll shrink your Windows partition to create unallocated space &mdash; no data will be lost.</p>
+          <pre><code><span class="hl3">Windows path: Right-click Start → Disk Management</span>
+<span class="hl3">→ Right-click C: drive → "Shrink Volume"</span>
+<span class="hl3">→ Enter amount in MB: at least 51200 (50 GB), ideally 102400 (100 GB)</span>
+<span class="hl3">→ Click "Shrink"</span></code></pre>
+          <p><strong>How much space do you need?</strong> Arch itself takes about 5 GB. The WifeRice dotfiles + applications add another 5-10 GB. You want at least 30 GB free for apps, files, and breathing room. If you have a large disk, give Arch 100+ GB.</p>
+          <div class="tip-box"><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 008.91 14"/></svg></span> Important:</strong> After shrinking, you'll see "Unallocated space" in Disk Manager. <strong>Do NOT create partitions in Windows</strong> &mdash; leave it as unallocated. We'll create the Linux partitions during the Arch install.</div>
+          <p><strong>After shrinking:</strong> Shut down Windows (do NOT use "Restart" &mdash; use "Shut down" to ensure a full shutdown). Insert your Arch USB, boot into it, and continue.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-3">
+        <div class="install-step-header">
+          <div class="install-step-num">3</div>
+          <div class="install-step-title">Boot Arch USB &amp; Connect to Internet</div>
+        </div>
+        <div class="install-step-body">
+          <p>Boot from the Arch Linux USB drive. Verify UEFI mode and connect to the internet.</p>
+          <pre><code><span class="hl"># Verify UEFI mode</span>
+ls /sys/firmware/efi/efivars    <span class="hl"># Must list files</span>
+
+<span class="hl"># Connect to WiFi</span>
+iwctl
+<span class="hl2">[iwd]#</span> device list
+<span class="hl2">[iwd]#</span> station wlan0 scan
+<span class="hl2">[iwd]#</span> station wlan0 get-networks
+<span class="hl2">[iwd]#</span> station wlan0 connect "Your WiFi Name"
+<span class="hl2">[iwd]#</span> exit
+
+<span class="hl"># Verify connection</span>
+ping -c 3 archlinux.org</code></pre>
+          <p><strong>Beginner tip:</strong> If you get "Device not found" in iwctl, try <code>iwctl device list</code> first to see the actual adapter name (it might be <code>wlp2s0</code> or something similar instead of <code>wlan0</code>).</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-4">
+        <div class="install-step-header">
+          <div class="install-step-num">4</div>
+          <div class="install-step-title">Partition for Dual Boot</div>
+        </div>
+        <div class="install-step-body">
+          <p>Now we look at the disk layout and create Arch partitions in the unallocated space. We will <strong>NOT</strong> touch the Windows partitions.</p>
+          <pre><code><span class="hl"># List all disks and partitions</span>
+lsblk
+
+<span class="hl"># Example output for a dual-boot setup:</span>
+<span class="hl3"># NAME        SIZE TYPE        MOUNTPOINT</span>
+<span class="hl3"># nvme0n1    476.9G disk</span>
+<span class="hl3"># ├─nvme0n1p1 100M  EFI System    ← Windows EFI (DO NOT TOUCH)</span>
+<span class="hl3"># ├─nvme0n1p2 350G  Windows C:    ← Windows data (DO NOT TOUCH)</span>
+<span class="hl3"># └─nvme0n1p3 126G  Unallocated   ← YOUR SPACE for Arch</span>
+
+<span class="hl"># Create Arch partitions in the unallocated space</span>
+gdisk /dev/nvme0n1
+
+<span class="hl3">  n     → new partition</span>
+<span class="hl3">  Partition number: [Enter] (accept default)</span>
+<span class="hl3">  First sector: [Enter] (accept default = start of free space)</span>
+<span class="hl3">  Last sector: +8G    → hex code 8200 (Linux swap, optional)</span>
+<span class="hl3">  n     → new partition</span>
+<span class="hl3">  [Enter], [Enter]    → hex code 8300 (Linux filesystem, rest of space)</span>
+<span class="hl3">  w     → write changes and exit</span>
+<span class="hl3">  y     → confirm</span></code></pre>
+          <p><strong>Sharing the Windows EFI partition:</strong> In most setups, Windows already created an EFI partition (<code>nvme0n1p1</code>). We can reuse it &mdash; GRUB will install its files alongside Windows' bootloader. If you don't have an EFI partition (unusual for modern systems), create a new one in the unallocated space.</p>
+          <div class="warn-box"><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span> CRITICAL:</strong> <strong>NEVER</strong> delete, format, or modify the Windows partitions (<code>ntfs</code> filesystem). Only create new partitions in the unallocated space. If you accidentally wipe Windows, all your data will be lost.</div>
+          <p><strong>After partitioning:</strong> Run <code>lsblk</code> again to verify. You should see your new partitions at the end of the list.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-5">
+        <div class="install-step-header">
+          <div class="install-step-num">5</div>
+          <div class="install-step-title">Format &amp; Mount</div>
+        </div>
+        <div class="install-step-body">
+          <p>Format only the new Linux partitions. Leave the Windows partitions completely alone.</p>
+          <pre><code><span class="hl"># Format the root partition (replace p4 with your Linux root partition)</span>
+mkfs.ext4 /dev/nvme0n1p4
+
+<span class="hl3"># Only if you created a swap partition:</span>
+<span class="hl3">mkswap /dev/nvme0n1p3 && swapon /dev/nvme0n1p3</span>
+
+<span class="hl"># Mount root to /mnt</span>
+mount /dev/nvme0n1p4 /mnt
+
+<span class="hl"># Mount the Windows EFI partition to /mnt/boot</span>
+mount --mkdir /dev/nvme0n1p1 /mnt/boot</code></pre>
+          <p><strong>Which partition is which?</strong> The Windows EFI partition is usually the smallest partition with <code>vfat</code> or <code>fat32</code> filesystem type (typically 100-500 MB). Your new Linux root partition will be ext4. Run <code>lsblk -f</code> to see filesystem types clearly.</p>
+          <p><strong>Why mount EFI to /mnt/boot?</strong> By placing GRUB on the existing Windows EFI partition, both Windows and Arch share the same EFI system partition. Your motherboard already knows about this partition, so no extra BIOS configuration is needed.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-6">
+        <div class="install-step-header">
+          <div class="install-step-num">6</div>
+          <div class="install-step-title">Install the Base System</div>
+        </div>
+        <div class="install-step-body">
+          <p>Install Arch's core packages.</p>
+          <pre><code><span class="hl"># Update mirrors (replace "US" with your country)</span>
+reflector --country US --age 6 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+
+<span class="hl"># Install base system</span>
+pacstrap -K /mnt base base-devel linux linux-firmware linux-headers
+pacstrap /mnt networkmanager vim sudo git
+
+<span class="hl"># Generate fstab</span>
+genfstab -U /mnt >> /mnt/etc/fstab
+
+<span class="hl"># Verify it includes both your root and the EFI partition</span>
+cat /mnt/etc/fstab</code></pre>
+          <p><strong>Why base-devel?</strong> It's required for building packages from the AUR (Arch User Repository). The dotfiles installer and many community packages depend on it. Skip only if you're very tight on disk space.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-7">
+        <div class="install-step-header">
+          <div class="install-step-num">7</div>
+          <div class="install-step-title">Configure the System</div>
+        </div>
+        <div class="install-step-body">
+          <p>Enter the new system and set up timezone, language, hostname, and password.</p>
+          <pre><code><span class="hl"># Chroot into the new system</span>
+arch-chroot /mnt
+
+<span class="hl"># Set timezone (adjust to your location)</span>
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock --systohc
+
+<span class="hl"># Set locale</span>
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
+<span class="hl"># Set hostname</span>
+echo "arch-dual" > /etc/hostname
+
+<span class="hl"># Set hosts file</span>
+cat > /etc/hosts << 'EOF'
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   arch-dual.localdomain arch-dual
+EOF
+
+<span class="hl"># Set root password</span>
+passwd
+
+<span class="hl"># Enable NetworkManager</span>
+systemctl enable NetworkManager</code></pre>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-8">
+        <div class="install-step-header">
+          <div class="install-step-num">8</div>
+          <div class="install-step-title">Install GRUB with Windows Detection</div>
+        </div>
+        <div class="install-step-body">
+          <p>This is the <strong>key step</strong> for dual boot. We install GRUB and tell it to scan for Windows so it appears in the boot menu.</p>
+          <pre><code><span class="hl"># Install GRUB, EFI boot manager, and os-prober</span>
+pacman -S grub efibootmgr os-prober
+
+<span class="hl"># IMPORTANT: Enable os-prober in GRUB config</span>
+echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+
+<span class="hl"># Install GRUB to the EFI partition</span>
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+
+<span class="hl"># Scan for Windows</span>
+os-prober
+
+<span class="hl"># Generate GRUB config (includes both Arch and Windows now)</span>
+grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
+          <p><strong>What os-prober does:</strong> It looks at all partitions on all disks and tries to detect other operating systems. When it finds Windows, it adds an entry like <code>Windows Boot Manager</code> to the GRUB menu.</p>
+          <div class="tip-box"><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 008.91 14"/></svg></span> Windows not showing up?</strong> Most common reasons: (1) Fast Boot is still enabled &mdash; go back to Step 1 and check. (2) The EFI partition wasn't mounted &mdash; verify with <code>ls /boot/EFI</code>. (3) Secure Boot is still on. (4) The Windows partition is hibernated &mdash; boot into Windows and do a full <code>shutdown /s /t 0</code>.</div>
+          <p><strong>What you should see in the output:</strong></p>
+          <pre><code><span class="hl3"># grub-mkconfig should show:</span>
+<span class="hl3">#   Found theme: ...</span>
+<span class="hl3">#   Found linux image: /boot/vmlinuz-linux</span>
+<span class="hl3">#   Found initrd image: ...</span>
+<span class="hl3">#   Found Windows Boot Manager on /dev/nvme0n1p1</span>
+<span class="hl3">#   Adding boot menu entry for Windows Boot Manager ...</span></code></pre>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-9">
+        <div class="install-step-header">
+          <div class="install-step-num">9</div>
+          <div class="install-step-title">Create a User Account</div>
+        </div>
+        <div class="install-step-body">
+          <p>Create your daily-driver user account with sudo privileges.</p>
+          <pre><code><span class="hl"># Create user (replace 'username' with your desired username)</span>
+useradd -m -G wheel,audio,video,storage,power,adbusers username
+
+<span class="hl"># Set password</span>
+passwd username
+
+<span class="hl"># Grant sudo access</span>
+EDITOR=vim visudo
+<span class="hl3"># Uncomment: %wheel ALL=(ALL:ALL) ALL</span>
+
+<span class="hl"># Exit and reboot</span>
+exit
+umount -R /mnt
+reboot</code></pre>
+          <p><strong>First boot check:</strong> When the computer restarts, you should see the GRUB menu with two options: <strong>Arch Linux</strong> and <strong>Windows Boot Manager</strong>. Use the arrow keys to select which OS to start. If you don't see the menu, press and hold <code>Shift</code> (or spam <code>Esc</code>) during boot to force it to appear.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-10">
+        <div class="install-step-header">
+          <div class="install-step-num">10</div>
+          <div class="install-step-title">Install GPU Drivers</div>
+        </div>
+        <div class="install-step-body">
+          <p>Boot into Arch, connect to the internet, and install the right GPU drivers.</p>
+          <pre><code><span class="hl"># Connect to WiFi after first boot</span>
+sudo nmcli device wifi connect "Your WiFi" password "yourpassword"
+
+<span class="hl"># NVIDIA</span>
+sudo pacman -S nvidia nvidia-utils nvidia-settings lib32-nvidia-utils
+
+<span class="hl"># AMD</span>
+sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon
+
+<span class="hl"># Intel</span>
+sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel
+
+<span class="hl"># Install yay (AUR helper) - needed for dotfiles</span>
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd /tmp/yay && makepkg -si
+rm -rf /tmp/yay</code></pre>
+          <p><strong>Beginner tip:</strong> If you're on an NVIDIA Optimus laptop, don't worry about GPU switching now — the WifeRice installer handles it automatically in the next step.</p>
+        </div>
+      </div>
+
+      <div class="install-step fade-in" id="db-11">
+        <div class="install-step-header">
+          <div class="install-step-num">11</div>
+          <div class="install-step-title">Install the Dotfiles</div>
+        </div>
+        <div class="install-step-body">
+          <p>The same one-liner. It detects your GPU, installs Hyprland, QuickShell, all widgets, wallpapers, SDDM theme, and applications.</p>
+          <div class="install-cmd-box">
+            <div class="install-cmd-scroll"><code>bash -c "$(curl -fsSL <span class="hl">https://raw.githubusercontent.com/eprahemi/WifeRice/main/install.sh</span>)"</code></div>
+            <button class="copy-btn" onclick="copyCmd(this)" data-tooltip="Copy install command"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></button>
+          </div>
+          <p><strong>After reboot:</strong> You'll see the SDDM login screen. Log in and press <code>Super+W</code> for wallpapers, <code>Super+H</code> for the keybind guide. Want to go back to Windows? Just reboot and pick "Windows Boot Manager" from the GRUB menu.</p>
+          <div class="tip-box"><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 008.91 14"/></svg></span> Dual-boot bonus:</strong> From Arch, you can access your Windows files! Your Windows partition is usually mounted at <code>/mnt/windows</code> or accessible through your file manager. Just don't modify Windows system files from Linux.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TROUBLESHOOTING
+         ═══════════════════════════════════════════════════════════════ -->
+    <div style="margin-top:64px; padding-top:48px; border-top:1px solid var(--border);">
+      <div class="section-header">
+        <div class="label" style="color:var(--mauve);"><span class="icon-svg" style="width:18px;height:18px;vertical-align:-3px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></span> Troubleshooting</div>
+        <h2 style="font-size:clamp(20px,2vw,28px);">Common Problems &amp; Fixes</h2>
+      </div>
+
+      <div class="install-step fade-in">
+        <div class="install-step-body" style="padding-left:0;">
+          <p><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg></span> "Failed to install GRUB"</strong><br>
+          Make sure you're in UEFI mode (<code>ls /sys/firmware/efi/efivars</code>). If it's empty, your BIOS is in Legacy/CSM mode &mdash; switch to UEFI in BIOS settings.</p>
+
+          <p><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg></span> Windows doesn't appear in GRUB</strong><br>
+          Run <code>os-prober</code> manually after booting into Arch. If it finds nothing, check: Fast Boot disabled? Secure Boot disabled? EFI partition mounted? Run <code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code> again after fixing.</p>
+
+          <p><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg></span> WiFi not working</strong><br>
+          Some WiFi cards need additional firmware. Run <code>lspci -k</code> to see your network card. Common fixes: <code>sudo modprobe brcmfmac</code> for Broadcom, or install <code>linux-firmware</code> if you skipped it.</p>
+
+          <p><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg></span> "arch-chroot: command not found"</strong><br>
+          You need to run this from the Arch live USB environment, not from inside your normal system. Reboot from the USB.</p>
+
+          <p><strong><span class="icon-svg" style="width:16px;height:16px;vertical-align:-2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg></span> Boot hangs at a black screen after GRUB</strong><br>
+          This is usually a GPU driver issue. Reboot, press <code>e</code> at the GRUB menu, add <code>nomodeset</code> to the end of the <code>linux</code> line, then press <code>Ctrl+X</code> to boot. Once in the system, install the correct GPU drivers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;border-radius:12px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/9;background:var(--bg3);">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/xArcL6WVmwI?start=64" data-tooltip="Dual Boot Arch Linux and Windows Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;"></iframe>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;">
+      <a href="install-arch.html" class="section-link" style="gap:8px;transition:gap .3s;" onmouseenter="this.style.gap='14px'" onmouseleave="this.style.gap='8px'">&larr; Back to Install Guide</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/eprahemi/WifeRice" target="_blank" aria-label="GitHub"><span class="icon-svg" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.139 3.006.405 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span></a>
+    <a href="home.html">Home</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="changelog.html">Changelog</a>
+  </div>
+  <p>WifeRice &mdash; <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scroll-progress').style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+});
+
+function copyCmd(btn) {
+  const code = btn.parentElement.querySelector('code').textContent.trim();
+  navigator.clipboard.writeText(code).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '&#x2713;';
+    btn.style.color = '#4ade80';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
+  });
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', html.getAttribute('data-theme'));
+}
+const saved = localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme', saved);
+</script>
+</body>
+</html>
