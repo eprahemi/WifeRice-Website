@@ -52,15 +52,20 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
-      <div class="changelog-version">v1.7.51 <span class="changelog-date">2026-05-18</span></div>
+      <div class="changelog-version">v1.7.52 <span class="changelog-date">2026-05-18</span></div>
       <ul>
-        <li>FIXED: Website/dotfiles audit — 8 misinformation/inconsistency issues resolved across both repos</li>
-        <li>FIXED: updates.json latest_version was stuck at 1.7.28 — users missed 8 critical releases (quoting crash, scale fix, settings_watcher)</li>
-        <li>FIXED: Website changelog was 8 versions behind — stopped at v1.7.42, now complete</li>
-        <li>FIXED: settings.json policy in website docs — now correctly shows "updated every release" with backup safety net</li>
-        <li>FIXED: install.sh header comment used old broken double-quote one-liner syntax</li>
-        <li>FIXED: home.html fake "3.8k stars" badge replaced with dynamic shields.io badge</li>
-        <li>FIXED: All website "Last updated" dates refreshed</li>
+        <li>ADDED: Caffeine Toggle — systemd-inhibit prevents suspend, TopBar indicator</li>
+        <li>ADDED: Night Light — wlsunset blue light filter (3500K), auto-installs if missing</li>
+        <li>ADDED: Do Not Disturb — suppress all QuickShell notifications, TopBar toggle</li>
+        <li>ADDED: Power Profile Switcher — cycle balanced/performance/power-saver</li>
+        <li>ADDED: Gaming Mode — disables compositor effects, performance governor, DND+Caffeine</li>
+        <li>ADDED: VPN Quick Manager — toggle first WireGuard VPN via NetworkManager</li>
+        <li>ADDED: Quick Notes — floating text popup saves to ~/Notes.md (Super+Shift+N)</li>
+        <li>ADDED: System Monitor — live CPU/RAM/disk bars with 2s polling (Super+Shift+M)</li>
+        <li>ADDED: Workspace Overview — visual grid of all workspaces with window lists</li>
+        <li>ADDED: Theme Profiles — save/restore wallpaper + toggle states</li>
+        <li>ENHANCED: TopBar now has 6 new toggle buttons + 2 new utility buttons</li>
+        <li>All new features have Super+Shift+ keybinds and TopBar buttons</li>
       </ul>
     </div>
     <div class="changelog-item fade-in">
