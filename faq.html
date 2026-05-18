@@ -68,7 +68,7 @@
           <span>Does the installer wipe my existing config?</span>
           <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
         </div>
-        <div class="faq-a">No. The installer asks what to preserve before making any changes. It prompts: <strong>keybinds & shortcuts</strong>, <strong>terminal & editor</strong> (Kitty, Neovim), <strong>desktop configs</strong> (Rofi, SwayNC, Matugen), and <strong>wallpapers</strong>. It also asks if you want to <strong>override the SDDM theme</strong> and optionally lets you configure <strong>weather API</strong>. Whatever you choose to keep is left untouched. Your <code>settings.json</code> (monitor layout, startup apps, custom keybinds) is never touched. The only files overwritten are the QuickShell QML files, scripts, and config templates — everything you'd want updated. Weather <code>.env</code> and <code>~/.Wallpapers/</code> survive every update.</div>
+        <div class="faq-a">No. The installer asks what to preserve before making any changes. It prompts: <strong>keybinds & shortcuts</strong>, <strong>terminal & editor</strong> (Kitty, Neovim), <strong>desktop configs</strong> (Rofi, SwayNC, Matugen), and <strong>wallpapers</strong>. It also asks if you want to <strong>override the SDDM theme</strong> and optionally lets you configure <strong>weather API</strong>. Whatever you choose to keep is left untouched. Your <code>settings.json</code> is <strong>updated every release</strong> with the latest monitor config and scaling fixes — a safety backup is saved to <code>/tmp/wiferice_settings_backup.json</code> and restored if validation fails. Use the Settings UI (Super+M) to customize monitor layout, startup apps, and keybinds. Weather <code>.env</code> and <code>~/.Wallpapers/</code> survive every update.</div>
       </div>
 
       <div class="faq-item fade-in">
@@ -76,7 +76,7 @@
           <span>Can I use this on an existing Arch installation?</span>
           <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
         </div>
-        <div class="faq-a">Yes. The one-liner installer works on both fresh and existing Arch systems. It detects what's already installed and only adds missing packages via pacman and yay. Your existing files in <code>~/Pictures/Wallpapers/</code>, <code>~/.Wallpapers/</code>, and <code>~/.config/hypr/settings.json</code> are preserved. The installer also detects your GPU (NVIDIA, AMD, or Intel) and installs the appropriate drivers if missing. Note: this is designed for Arch Linux and arch-based distros only. For EndeavourOS or Manjaro, see "Can I install this on EndeavourOS or Manjaro?" below.</div>
+        <div class="faq-a">Yes. The one-liner installer works on both fresh and existing Arch systems. It detects what's already installed and only adds missing packages via pacman and yay. Your existing files in <code>~/Pictures/Wallpapers/</code> and <code>~/.Wallpapers/</code> are preserved. Your <code>~/.config/hypr/settings.json</code> is <strong>updated every release</strong> with the latest monitor config and scaling fixes — a safety backup is saved to <code>/tmp/wiferice_settings_backup.json</code> and restored if validation fails. Use the Settings UI (Super+M) to customize. The installer also detects your GPU (NVIDIA, AMD, or Intel) and installs the appropriate drivers if missing. Note: this is designed for Arch Linux and arch-based distros only. For EndeavourOS or Manjaro, see "Can I install this on EndeavourOS or Manjaro?" below.</div>
       </div>
 
       <div class="faq-item fade-in">
@@ -92,7 +92,7 @@
           <span>How do I update the dotfiles?</span>
           <span class="faq-arrow"><span class="icon-svg" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span></span>
         </div>
-        <div class="faq-a">Three ways:<br><br><strong>1. Automatic notification</strong> — The update notifier daemon checks for new versions every 10 minutes. When a new version is detected, a notification appears in the top bar. Click it to run the installer.<br><br><strong>2. Manual one-liner</strong> — Run the same install command: <code>bash -c 'eval "$(curl -fsSL https://raw.githubusercontent.com/eprahemi/WifeRice/main/install.sh)"'</code><br><br><strong>3. Via Guide</strong> — Press Super+H, go to the Recent Changes tab. If an update is available, click the update button.<br><br>All methods are safe — they preserve your settings and ask what to keep. After updating, check the changelog tab (Super+H) or the website changelog to see what changed.</div>
+        <div class="faq-a">Three ways:<br><br><strong>1. Automatic notification</strong> — The update notifier daemon checks for new versions every 10 minutes. When a new version is detected, a notification appears in the top bar. Click it to run the installer.<br><br><strong>2. Manual one-liner</strong> — Run the same install command: <code>bash -c 'eval "$(curl -fsSL https://raw.githubusercontent.com/eprahemi/WifeRice/main/install.sh)"'</code><br><br><strong>3. Via Guide</strong> — Press Super+H, go to the Recent Changes tab. If an update is available, click the update button.<br><br>All methods are safe — they ask what to preserve and keep your personal files intact. Note: <code>settings.json</code> is updated every release with latest monitor/scaling fixes (backup saved to <code>/tmp/wiferice_settings_backup.json</code>). After updating, check the changelog tab (Super+H) or the website changelog to see what changed.</div>
       </div>
 
       <div class="faq-item fade-in">
@@ -278,7 +278,7 @@
     <a href="changelog.html">Changelog</a>
   </div>
   <p>&copy; 2026 WifeRice &mdash; Amethyst Noir</p>
-  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-18</span></p>
 </footer>
 
 <script>

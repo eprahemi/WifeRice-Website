@@ -52,6 +52,65 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.50 <span class="changelog-date">2026-05-18</span></div>
+      <ul>
+        <li>CRITICAL FIX: hyprctl reload does NOT apply monitor scale changes — settings_watcher now runs hyprctl keyword monitor for each monitor after reload to force scale changes</li>
+        <li>Fixes the "everything oversized" bug (Chrome, kitty, fonts, notifications too big after update)</li>
+        <li>install.sh now calls settings_watcher.sh --compile after scripts deploy to regenerate monitors.conf</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.49 <span class="changelog-date">2026-05-18</span></div>
+      <ul>
+        <li>CRITICAL FIX: Fix terminal crash on update — GuidePopup.qml update buttons used double quotes in bash -c, now uses single quotes + eval</li>
+        <li>CRITICAL FIX: install.sh never called settings_watcher.sh --compile after deploying settings.json — now compiles to regenerate monitors.conf and reload Hyprland</li>
+        <li>settings.json always overwritten with auto-detected monitor name (backup to /tmp/, JSON validation restores backup on failure)</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.48 <span class="changelog-date">2026-05-18</span></div>
+      <ul>
+        <li>Auto-detect monitor name on fresh install — reads first connected display from sysfs</li>
+        <li>Injects real monitor name into settings.json instead of hardcoded eDP-1</li>
+        <li>Falls back to default if detection fails or jq missing; JSON validation ensures validity</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.47 <span class="changelog-date">2026-05-17</span></div>
+      <ul>
+        <li>settings.json protected from overwrite on update (policy later reverted in v1.7.49)</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.46 <span class="changelog-date">2026-05-17</span></div>
+      <ul>
+        <li>FIXED: Audio auto-switch no longer overrides manual sink changes — only reacts to plug/unplug events</li>
+        <li>Telemetry prompt moved to beginning of install</li>
+        <li>Opting out of telemetry removes old scripts and timers</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.45 <span class="changelog-date">2026-05-17</span></div>
+      <ul>
+        <li>Telemetry opt-out prompt before script deployment</li>
+        <li>Matugen v2/v3 detection with compatibility warning for v3 users</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.44 <span class="changelog-date">2026-05-16</span></div>
+      <ul>
+        <li>Watcher auto-restart on update — install.sh kills and restarts watchers after deploy</li>
+        <li>Fixes take effect immediately without manual restart</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.43 <span class="changelog-date">2026-05-16</span></div>
+      <ul>
+        <li>USB audio auto-switch — fixed audio_autoswitch.sh not detecting USB audio devices</li>
+        <li>Added "usb" to external device pattern for USB sink detection</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.42 <span class="changelog-date">2026-05-16</span></div>
       <ul>
         <li>QuickShell auto-deploy: install.sh now uses rsync to deploy entire quickshell/ directory</li>
@@ -120,7 +179,7 @@
     <a href="keybinds.html">Keybinds</a>
   </div>
   <p>WifeRice — <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
-  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-16</span></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-18</span></p>
 </footer>
 
 <script>
