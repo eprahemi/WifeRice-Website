@@ -52,6 +52,18 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.51 <span class="changelog-date">2026-05-18</span></div>
+      <ul>
+        <li>FIXED: Website/dotfiles audit — 8 misinformation/inconsistency issues resolved across both repos</li>
+        <li>FIXED: updates.json latest_version was stuck at 1.7.28 — users missed 8 critical releases (quoting crash, scale fix, settings_watcher)</li>
+        <li>FIXED: Website changelog was 8 versions behind — stopped at v1.7.42, now complete</li>
+        <li>FIXED: settings.json policy in website docs — now correctly shows "updated every release" with backup safety net</li>
+        <li>FIXED: install.sh header comment used old broken double-quote one-liner syntax</li>
+        <li>FIXED: home.html fake "3.8k stars" badge replaced with dynamic shields.io badge</li>
+        <li>FIXED: All website "Last updated" dates refreshed</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.50 <span class="changelog-date">2026-05-18</span></div>
       <ul>
         <li>CRITICAL FIX: hyprctl reload does NOT apply monitor scale changes — settings_watcher now runs hyprctl keyword monitor for each monitor after reload to force scale changes</li>
