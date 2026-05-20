@@ -52,6 +52,16 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.54 <span class="changelog-date">2026-05-20</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> hypridle crash (SIGSEGV) — replaced with swayidle. hypridle v0.1.7 had ABI mismatch with sdbus-c++ 2.3.0</li>
+        <li><strong>FIXED:</strong> No more polkit auth prompts on lid close — Lock.qml runs directly via WlSessionLock Wayland protocol</li>
+        <li><strong>FIXED:</strong> lock-session → lock-sessions (plural) in config</li>
+        <li><strong>CHANGED:</strong> swayidle is now the default idle daemon — simpler, no ABI issues, no polkit needed</li>
+        <li>swayidle handles lid-close lock, idle timeout (2000s), and DPMS-on after resume</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.53 <span class="changelog-date">2026-05-20</span></div>
       <ul>
         <li>All toggle buttons (Caffeine, Night Light, DND, Power Profile, Gaming, VPN) removed — streamlined for coders</li>
