@@ -52,6 +52,13 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.56 <span class="changelog-date">2026-05-20</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> Guide popup changelog was stuck at v1.7.52 — v1.7.53, v1.7.54, and v1.7.55 entries were missing from the hardcoded ListModel</li>
+        <li>Added "must update GuidePopup.qml" rule to AI memory to prevent recurrence</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.55 <span class="changelog-date">2026-05-20</span></div>
       <ul>
         <li><strong>CRITICAL FIX:</strong> settings.json still referenced hypridle — autostart.conf regenerated with hypridle on compile, but hypridle was removed. Result: no idle daemon, lid close suspended without locking</li>
