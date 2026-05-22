@@ -53,6 +53,16 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.69 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CRITICAL FIX:</strong> USB/device sounds still not playing — udev RUN → su → pw-play chain was fundamentally unreliable (PipeWire not accessible from udev context)</li>
+        <li><strong>REPLACED:</strong> Removed udev RUN rules approach entirely — USB monitoring is now <strong>built directly into</strong> <code>audio_autoswitch.sh</code> (same script, same service, one less service to manage)</li>
+        <li><strong>SAME METHOD AS BATTERY SOUNDS:</strong> Uses <code>udevadm monitor --property</code> (no root) in a background fork inside <code>audio_autoswitch.sh</code> — runs as a user process with full PipeWire access, same as <code>battery_fetch.sh</code></li>
+        <li><strong>NEW:</strong> <code>audio_autoswitch.sh</code> now has a background USB udev monitor alongside the existing <code>pactl subscribe</code> audio listener — no separate service, no separate script</li>
+        <li><strong>FIXED:</strong> Old <code>99-usb-sound.rules</code> automatically removed from <code>/etc/udev/rules.d/</code> on update</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.68 <span class="changelog-date">2026-05-22</span></div>
       <ul>
         <li><strong>FIXED:</strong> USB/device sounds not playing for many users — udev rules were too restrictive</li>
