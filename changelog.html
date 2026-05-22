@@ -53,6 +53,15 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.70 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CRITICAL FIX:</strong> Ctrl+Left/Right workspace navigation never worked — keybinding was only in generated <code>keybindings.conf</code> but <strong>NOT</strong> in <code>keybinds.conf.template</code>, so it was silently wiped on every <code>settings_watcher --compile</code></li>
+        <li><strong>FIXED:</strong> USB sounds played multiple times per plug/unplug — udev fires multiple events for one action. Added short 1s dedup rate limiter back to <code>usb_sound.sh</code>.</li>
+        <li><strong>CHANGED:</strong> <code>install.sh</code> defaults flipped — Enter now <strong>overwrites</strong> configs (was 'keep'). Updates <strong>actually update</strong> users now. Type Y explicitly to keep old configs.</li>
+        <li><strong>NEW:</strong> AI Rule 11 — 'When we ship an update, the user gets it'. No more preserve defaults that silently skip updates.</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.69 <span class="changelog-date">2026-05-23</span></div>
       <ul>
         <li><strong>CRITICAL FIX:</strong> USB/device sounds still not playing — udev RUN → su → pw-play chain was fundamentally unreliable (PipeWire not accessible from udev context)</li>
