@@ -53,6 +53,13 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.67 <span class="changelog-date">2026-05-22</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> settings_watcher.sh --compile errors were silently swallowed by <code>2>/dev/null || true</code> — if monitors.conf generation failed, Hyprland fell back to default 1.5 scale with no warning</li>
+        <li><strong>FIXED:</strong> install.sh now logs compile errors to the install log and shows a yellow warning instead of a green checkmark when the compile step fails</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.66 <span class="changelog-date">2026-05-22</span></div>
       <ul>
         <li><strong>NEW:</strong> USB/device plug/unplug notification sounds — ascending chime on connect, descending on disconnect</li>
