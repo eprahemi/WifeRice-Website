@@ -52,6 +52,25 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.59 <span class="changelog-date">2026-05-22</span></div>
+      <ul>
+        <li><strong>MASSIVE AUDIT FIX:</strong> Full 64-issue audit resolved — all 7 phases complete</li>
+        <li><strong>install.sh overhaul:</strong> All 12 empty steps filled with real packages (GPU drivers, PipeWire, yay, codecs, fonts, Flatpak, Spicetify, LazyVim), <code>sudo pacman -Sy</code> added, yay properly installed, <code>2>/dev/null</code> removed, <code>rsync --delete</code> guarded against empty source, <code>set -e</code> hardened with <code>|| true</code></li>
+        <li><strong>SECURITY:</strong> All 14 Discord webhook tokens extracted from source scripts into shared config file — zero tokens in public code</li>
+        <li><strong>CRITICAL FIX:</strong> <code>lock.sh</code> — <code>kill ""</code> bug was killing ALL processes (PID 0); division-by-zero crash on empty music playlist</li>
+        <li><strong>CRITICAL FIX:</strong> <code>fetch_workspaces.sh</code> — unquoted heredoc caused JSON injection from env vars</li>
+        <li><strong>FIXED:</strong> <code>restore.sh</code> — version no longer hardcoded to 1.7.20, chmod uses <code>find</code> (not glob), tilde replaced with <code>$HOME</code></li>
+        <li><strong>FIXED:</strong> <code>theme_profiles.sh</code> — wallpaper now actually applies via <code>awww img</code></li>
+        <li><strong>FIXED:</strong> <code>check_disk.sh</code>, <code>toggle_gaming.sh</code>, <code>toggle_powerprofile.sh</code> — sudo commands guarded with <code>timeout</code> to prevent hangs</li>
+        <li><strong>FIXED:</strong> <code>update_notifier.sh</code> — notification button click now opens terminal</li>
+        <li><strong>FIXED:</strong> <code>volume_listener.sh</code> — locale-independent parsing with <code>LC_MESSAGES=C</code></li>
+        <li><strong>FIXED:</strong> tilde → <code>$HOME</code> across all script files (settings_watcher.sh, restore.sh, theme_profiles.sh, reload.sh)</li>
+        <li><strong>FIXED:</strong> <code>hypridle.conf</code> no longer deployed (swayidle is the default)</li>
+        <li><strong>FIXED:</strong> <code>default_settings.json</code> — <code>uiScale</code> 1.0 → 1 (int consistency)</li>
+        <li>Version bumped to 1.7.59 — 29 files changed, +444 / −101 lines</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.58 <span class="changelog-date">2026-05-22</span></div>
       <ul>
         <li><strong>CRITICAL FIX:</strong> Thunar and file managers showed no thumbnails — all thumbnail packages (tumbler, ffmpegthumbnailer, webp-pixbuf-loader, libopenraw, libgepub) were never actually installed by install.sh</li>
@@ -249,7 +268,7 @@
     <a href="keybinds.html">Keybinds</a>
   </div>
   <p>WifeRice — <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
-  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-20</span></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-22</span></p>
 </footer>
 
 <script>
