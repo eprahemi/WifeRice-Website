@@ -56,6 +56,7 @@
 <section>
     <div class="container">
     <input type="text" class="search-box" id="component-search" placeholder="Search components..." oninput="filterComponents(this.value)">
+    <p style="margin-bottom:16px;font-size:14px;color:var(--text3);">All paths are relative to <code style="background:var(--bg3);padding:2px 8px;border-radius:4px;">~/.config/hypr/</code> unless noted.</p>
     <div class="table-wrap fade-in">
       <table class="comparison-table">
         <thead><tr><th>Component</th><th>Path</th><th>Purpose</th></tr></thead>
@@ -85,13 +86,15 @@
           <tr><td>Movies</td><td>quickshell/movies/</td><td>Fun movie/humor popup</td></tr>
           <tr><td>Monitor Manager</td><td>quickshell/monitors/</td><td>Multi-monitor configuration</td></tr>
           <tr><td>SDDM Theme</td><td>SDDM/matugen-minimal/</td><td>QtQuick-based SDDM login theme with wallpaper background</td></tr>
-          <tr><td>Audio Auto-Switch</td><td>watchers/audio_autoswitch.sh</td><td>Automatically switches audio sink on headphone/BT plug/unplug</td></tr>
-          <tr><td>Battery Watcher</td><td>watchers/battery_{fetch,wait}.sh</td><td>Battery monitoring, low-battery warnings, 3% auto-suspend</td></tr>
-          <tr><td>Audio Watcher</td><td>watchers/audio_{fetch,wait}.sh</td><td>Volume level monitoring and OSD triggering</td></tr>
-          <tr><td>Network Watcher</td><td>watchers/network_{fetch,wait}.sh</td><td>Network connectivity monitoring</td></tr>
-          <tr><td>Bluetooth Watcher</td><td>watchers/bt_{fetch,wait}.sh</td><td>Bluetooth adapter and device monitoring</td></tr>
-          <tr><td>KB Layout Watcher</td><td>watchers/kb_{fetch,wait}.sh</td><td>Keyboard layout change detection</td></tr>
-          <tr><td>System Fetcher</td><td>watchers/sys_fetcher.sh</td><td>CPU%, RAM%, temperature, network rates</td></tr>
+          <tr><td>Audio Auto-Switch</td><td>quickshell/watchers/audio_autoswitch.sh</td><td>Automatically switches audio sink on headphone/BT plug/unplug</td></tr>
+          <tr><td>Battery Watcher</td><td>quickshell/watchers/battery_{fetch,wait}.sh</td><td>Battery monitoring, low-battery warnings, 3% auto-suspend</td></tr>
+          <tr><td>Audio Watcher</td><td>quickshell/watchers/audio_{fetch,wait}.sh</td><td>Volume level monitoring and OSD triggering</td></tr>
+          <tr><td>Network Watcher</td><td>quickshell/watchers/network_{fetch,wait}.sh</td><td>Network connectivity monitoring</td></tr>
+          <tr><td>Bluetooth Watcher</td><td>quickshell/watchers/bt_{fetch,wait}.sh</td><td>Bluetooth adapter and device monitoring</td></tr>
+          <tr><td>KB Layout Watcher</td><td>quickshell/watchers/kb_{fetch,wait}.sh</td><td>Keyboard layout change detection</td></tr>
+          <tr><td>System Fetcher</td><td>quickshell/watchers/sys_fetcher.sh</td><td>CPU%, RAM%, temperature, network rates</td></tr>
+          <tr><td>Screenshot Overlay</td><td>quickshell/ScreenshotOverlay.qml</td><td>GUI screenshot region selector with recording and QR scan modes</td></tr>
+          <tr><td>Volume Listener</td><td>scripts/volume_listener.sh</td><td>Listens for PipeWire volume changes and triggers OSD updates</td></tr>
           <tr><td>Init Script</td><td>scripts/init.sh</td><td>Boot-time wallpaper set, matugen theming, thumbnail cache pruning</td></tr>
           <tr><td>QS Manager</td><td>scripts/qs_manager.sh</td><td>IPC router: workspace switching, widget toggle, wallpaper prep</td></tr>
           <tr><td>Settings Watcher</td><td>scripts/settings_watcher.sh</td><td>Regenerates configs from templates on settings.json change</td></tr>
