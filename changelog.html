@@ -53,6 +53,17 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.66 <span class="changelog-date">2026-05-22</span></div>
+      <ul>
+        <li><strong>NEW:</strong> USB/device plug/unplug notification sounds — ascending chime on connect, descending on disconnect</li>
+        <li><strong>NEW:</strong> udev rules for USB storage (flash drives, external HDDs) and general USB devices (mice, keyboards, headsets)</li>
+        <li><strong>NEW:</strong> Headphone/Bluetooth plug/unplug sounds via audio_autoswitch.sh pactl integration</li>
+        <li><strong>NEW:</strong> usb_sound.sh with rate limiting (2s cooldown) and boot-time protection (skips first 60s of enumeration)</li>
+        <li><strong>NEW:</strong> ffmpeg-generated chime sounds at install time — no binary blobs in repo</li>
+        <li><strong>FIXED:</strong> Safe udev execution via su with XDG_RUNTIME_DIR set for PipeWire connectivity</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.65 <span class="changelog-date">2026-05-22</span></div>
       <ul>
         <li><strong>NEW:</strong> swayimg — lightweight Wayland-native image viewer with pixelation/blur censor keys</li>
