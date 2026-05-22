@@ -53,6 +53,16 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.65 <span class="changelog-date">2026-05-22</span></div>
+      <ul>
+        <li><strong>NEW:</strong> swayimg — lightweight Wayland-native image viewer with pixelation/blur censor keys</li>
+        <li><strong>NEW:</strong> MIME associations — Thunar for folders (fixes Discord/Vencord "Open folder" opening Gwenview), Gwenview for image editing</li>
+        <li><strong>NEW:</strong> Ctrl+Left/Right workspace navigation — no interference with Super+1-10 or 3-finger swipe</li>
+        <li><strong>FIXED:</strong> restore.sh version made dynamic — reads from installed state file with fallback (was stuck at v1.7.59)</li>
+        <li><strong>FIXED:</strong> Proton VPN package removed from install.sh — not found in AUR, fallback also failed silently</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.64 <span class="changelog-date">2026-05-22</span></div>
       <ul>
         <li><strong>FIXED:</strong> QuickShell package conflict — replaced official repo <code>quickshell</code> with AUR <code>quickshell-git</code> (same QML API, no conflict with existing git installs)</li>
