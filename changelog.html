@@ -52,6 +52,14 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.57 <span class="changelog-date">2026-05-20</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> External NTFS hard drives (Windows USB drives, external HDDs) failed to mount in Thunar — "wrong fs type" error caused by kernel ntfs3 driver conflicting with ntfs-3g FUSE driver</li>
+        <li>Installer now auto-installs ntfs-3g, blacklists kernel ntfs3 driver, and unloads it immediately — no reboot needed</li>
+        <li>Drives appear in Thunar → Devices sidebar automatically after install/update</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.56 <span class="changelog-date">2026-05-20</span></div>
       <ul>
         <li><strong>FIXED:</strong> Guide popup changelog was stuck at v1.7.52 — v1.7.53, v1.7.54, and v1.7.55 entries were missing from the hardcoded ListModel</li>
