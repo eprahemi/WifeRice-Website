@@ -52,6 +52,14 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.64 <span class="changelog-date">2026-05-22</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> QuickShell package conflict — replaced official repo <code>quickshell</code> with AUR <code>quickshell-git</code> (same QML API, no conflict with existing git installs)</li>
+        <li>Users who already have <code>quickshell-git</code> from AUR no longer see conflict errors during install or reinstall</li>
+        <li>Same fix pattern as v1.7.63 for VS Code</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.63 <span class="changelog-date">2026-05-22</span></div>
       <ul>
         <li><strong>FIXED:</strong> VS Code package conflict — replaced official repo <code>code</code> with AUR <code>visual-studio-code-bin</code> (Microsoft's official binary)</li>
