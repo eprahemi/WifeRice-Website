@@ -52,6 +52,14 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.62 <span class="changelog-date">2026-05-22</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> Hyprland config error "input:touchpad:accel_profile does not exist" — removed invalid line from touchpad sub-block</li>
+        <li>accel_profile = flat in main input block already applies to both mouse and touchpad</li>
+        <li>Final polish: all 64 audit issues, scale cascade, gaming settings complete</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.61 <span class="changelog-date">2026-05-22</span></div>
       <ul>
         <li><strong>CRITICAL FIX:</strong> Scale bug regression (v1.7.50) — <code>settings_watcher.sh --compile</code> triggered <code>hyprctl reload</code> which spawned a second watcher from the startup list. Two watchers raced, creating a cascade of reloads that reset the scale to ~1.5 despite monitors.conf saying scale=1</li>
