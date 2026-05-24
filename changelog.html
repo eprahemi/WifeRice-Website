@@ -120,6 +120,126 @@
       </ul>
     </div>
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.88 <span class="changelog-date">2026-05-24</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> SDDM wallpaper now supports any image format (PNG, JPG, JPEG, WEBP, BMP) in <code>~/.config/hypr/LoginScreen Settings/Wallpaper/</code></li>
+        <li><strong>CHANGED:</strong> GuidePopup tip updated — now points to <code>LoginScreen Settings/</code> override folder instead of system SDDM path</li>
+        <li><strong>FIXED:</strong> Repo SDDM <code>Main.qml</code> now has multi-format wallpaper fallback (was limited to <code>wallpaper.png</code> only)</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.87 <span class="changelog-date">2026-05-24</span></div>
+      <ul>
+        <li><strong>NEW:</strong> SDDM login screen reads <code>~/.config/hypr/LoginScreen Settings/</code> first — drop wallpaper and face icon there to customize login without sudo</li>
+        <li><strong>CHANGED:</strong> SDDM avatar fallback chain: LoginScreen Settings → <code>/usr/share/sddm/faces/.face.icon</code> → <code>/usr/share/sddm/faces/.face</code></li>
+        <li><strong>CHANGED:</strong> SDDM wallpaper fallback chain: LoginScreen Settings → theme default</li>
+        <li><strong>CHANGED:</strong> <code>install.sh</code> and <code>restore.sh</code> deploy defaults to LoginScreen Settings/</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.86 <span class="changelog-date">2026-05-24</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> Face icon deployed only to <code>~/.config/hypr/Faces/.face.icon</code> — <code>~/.face.icon</code> and <code>~/.face</code> are manual-only fallbacks</li>
+        <li><strong>FIXED:</strong> <code>restore.sh</code> condition and summary no longer reference username-specific face icon paths</li>
+        <li><strong>FIXED:</strong> <code>install.sh</code> no longer copies face icon to <code>~/.face.icon</code></li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.85 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> SDDM face icon now reads <code>/usr/share/sddm/faces/.face.icon</code> (generic) with fallback to <code>.face</code> instead of per-username file</li>
+        <li><strong>FIXED:</strong> SDDM theme <code>Main.qml</code> updated with <code>onStatusChanged</code> Image.Error fallback chain for avatar</li>
+        <li><strong>CHANGED:</strong> <code>restore.sh</code> copies face icon to <code>/usr/share/sddm/faces/.face.icon</code> only</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.84 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> GuidePopup <code>tipOpacity</code> fatal error on non-About tabs — Behavior removed from all tabs except About</li>
+        <li><strong>FIXED:</strong> CPU stat stuck at 0% — <code>top -bn1</code> awk syntax fix + <code>ps</code> fallback</li>
+        <li><strong>FIXED:</strong> Uptime stuck at "Loading..." — resource monitor now populates <code>sysUptime</code></li>
+        <li><strong>FIXED:</strong> Uptime format changed from "X hours, Y minutes" to "Xh Ym"</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.83 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>NEW:</strong> GuidePopup System tab — rotating tips with SVG lightbulb icon, glass-morphism card, fade transitions</li>
+        <li><strong>NEW:</strong> System tab Quick Stats — live CPU%, RAM, Disk, Uptime via resource monitor</li>
+        <li><strong>CHANGED:</strong> Rotating tips moved from About tab to System tab; About tab shows only links + version</li>
+        <li><strong>NEW:</strong> <code>tip_icon.svg</code> — custom lightbulb SVG icon with gradient fills and glow dots</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.82 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> All <code>~/.Wallpapers/</code> references removed — no fallback, no migration code left behind</li>
+        <li><strong>CHANGED:</strong> Face icon and lockscreen wallpaper paths consolidated under <code>~/.config/hypr/Faces/</code> and <code>~/.config/hypr/Lockscreen Wallpaper/</code></li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.81 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> Face icon and lockscreen wallpaper organized under <code>~/.config/hypr/</code> — QML and scripts read from new paths first</li>
+        <li><strong>FIXED:</strong> <code>.face.icon</code> deploy now copies hidden files correctly with <code>/./</code> source path instead of <code>*</code> glob</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.80 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> USB sounds path in deployed <code>usb_sound.sh</code> was stale (pointed to <code>sounds/</code> not <code>sounds/usb/</code>)</li>
+        <li><strong>FIXED:</strong> <code>.face.icon</code> now deployed to correct location that QML actually reads</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.79 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>REMOVED:</strong> Steam removed from <code>install.sh</code> AUR packages — saves 1.5GB of forced downloads; install manually with <code>yay -S steam</code></li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.78 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> Network sounds (connect, disconnect, error, power_on, power_off, switch) converted from WAV to MP3 — 2.1MB → 220KB</li>
+        <li><strong>CHANGED:</strong> Network sounds organized into subfolders: <code>sounds/network/connection/</code>, <code>sounds/network/power/</code>, <code>sounds/network/navigation/</code></li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.77 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> Old MP3 sound files from previous versions now properly cleaned up on update — removes stale duplicates</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.76 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>SECURITY:</strong> Hardened shell script input validation across <code>audio_autoswitch.sh</code> and <code>usb_sound.sh</code> — prevents potential command injection via malformed USB device descriptors</li>
+        <li><strong>SECURITY:</strong> Patched path traversal vector in <code>settings_watcher.sh</code> — sanitized template variable substitution</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.75 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>SECURITY:</strong> Fixed unsafe temporary file handling in <code>install.sh</code> and <code>restore.sh</code> — migrated from predictable <code>/tmp</code> paths to <code>mktemp</code>-based random directories</li>
+        <li><strong>SECURITY:</strong> Patched potential privilege escalation in udev rule cleanup — restricted rule removal to owner-only operations</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.74 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CRITICAL FIX:</strong> <code>swayidle</code> 66-min timeout used <code>hyprctl dispatch dpms off</code> instead of <code>systemctl suspend</code> — display stayed black after unlocking, requiring force restart</li>
+        <li><strong>CHANGED:</strong> <code>swayidle</code> timeout 4000 now runs <code>systemctl suspend</code> — after-resume fires correctly on wake, display turns back on</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.73 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> All sound MP3s reorganized into <code>quickshell/sounds/{battery,usb,updater,music}/</code> subfolders — consistent single location</li>
+        <li><strong>CHANGED:</strong> Script paths updated in battery_fetch.sh, usb_sound.sh, update_notifier.sh, music_control.sh, lock.sh</li>
+        <li><strong>CLEANUP:</strong> Old empty battery/ and music/ directories removed</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.71 <span class="changelog-date">2026-05-23</span></div>
       <ul>
         <li><strong>FIXED:</strong> Kitty no longer crashes during update — <code>hyprctl reload</code> now runs <strong>detached</strong> after the install script exits (was synchronous, disrupted Wayland session and crashed the terminal)</li>
