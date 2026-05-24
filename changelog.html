@@ -53,6 +53,67 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.82 <span class="changelog-date">2026-05-24</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> All <code>~/.Wallpapers/</code> references removed — no fallback, no migration code left behind</li>
+        <li><strong>CHANGED:</strong> Face icon and lockscreen wallpaper paths consolidated under <code>~/.config/hypr/Faces/</code> and <code>~/.config/hypr/Lockscreen Wallpaper/</code></li>
+        <li><strong>FIXED:</strong> <code>DOTS_VERSION</code> in install.sh finally bumped to 1.7.82 (was stuck at 1.7.78 — users never saw update notifications)</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.81 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> Face icon and lockscreen wallpaper organized under <code>~/.config/hypr/</code> — QML and scripts read from new paths first</li>
+        <li><strong>FIXED:</strong> <code>.face.icon</code> deploy now copies hidden files correctly with <code>/./</code> source path instead of <code>*</code> glob</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.80 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> USB sounds path in deployed <code>usb_sound.sh</code> was stale (pointed to <code>sounds/</code> not <code>sounds/usb/</code>)</li>
+        <li><strong>FIXED:</strong> <code>.face.icon</code> now deployed to correct location that QML actually reads</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.79 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>REMOVED:</strong> Steam removed from install.sh AUR packages — saves 1.5GB of forced downloads; users who need it install manually</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.78 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> Network sounds (connect, disconnect, error, power_on, power_off, switch) converted from WAV to MP3 — 2.1MB → 220KB</li>
+        <li><strong>CHANGED:</strong> Network sounds organized into subfolders inside <code>sounds/network/</code>: <code>connection/</code>, <code>power/</code>, <code>navigation/</code></li>
+        <li><strong>CLEANUP:</strong> Old network/sounds/ WAV files cleaned up on update</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.77 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> Old MP3 sound files from previous versions now properly cleaned up on update</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.76 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>SECURITY:</strong> Input validation and path sanitization hardening across installer scripts</li>
+        <li><strong>FIXED:</strong> Path traversal risks mitigated in file copy operations</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.74 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CRITICAL FIX:</strong> swayidle 66min-timeout was set to DPMS off only — now triggers <code>systemctl suspend</code> after display off, preventing battery drain on laptops</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.73 <span class="changelog-date">2026-05-23</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> All sound MP3s reorganized into <code>quickshell/sounds/</code> subfolders by device type — USB, network, battery — for maintainability</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.72 <span class="changelog-date">2026-05-23</span></div>
       <ul>
         <li><strong>FIXED:</strong> GuideAbout section displayed "Imperative" instead of "WifeRice" — branding fixed</li>
@@ -384,7 +445,7 @@
     <a href="keybinds.html">Keybinds</a>
   </div>
   <p>WifeRice — <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
-  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-22</span></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-24</span></p>
 </footer>
 
 <script>
