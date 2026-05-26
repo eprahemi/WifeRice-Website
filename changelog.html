@@ -53,6 +53,42 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.92 <span class="changelog-date">2026-05-26</span></div>
+      <ul>
+        <li><strong>CHANGED:</strong> SDDM assets moved to <strong>system paths only</strong> — <code>~/.config/hypr/LoginScreen Settings/</code> directory has been <strong>removed entirely</strong>. SDDM runs as the <code>sddm</code> user and cannot traverse <code>700</code> home directories — this was the root cause of the blank login screen for many users. All SDDM files now live under <code>/usr/share/sddm/</code>. QML theme files always update on every install. Wallpaper/face icons respect <code>SDDM_OVERWRITE</code> prompt.</li>
+        <li><strong>FIXED:</strong> SDDM wallpaper FastBlur now works — <code>bgWallpaper</code> <code>visible</code> changed from <code>false</code> to <code>true</code> so the source image can be read by the blur effect.</li>
+        <li><strong>FIXED:</strong> SDDM avatar Image block had collapsed one-line QML — properly formatted now. <code>.face.icon</code> system path works correctly.</li>
+        <li><strong>NEW:</strong> <code>background.png</code> fallback deployed on every install/restore — even if users delete all <code>wallpaper.*</code> files, SDDM will never go blank. Multi-format fallback: <code>wallpaper.png</code> → <code>wallpaper.jpg</code> → <code>wallpaper.jpeg</code> → <code>wallpaper.webp</code> → <code>wallpaper.bmp</code> → <code>background.png</code>.</li>
+        <li><strong>CHANGED:</strong> <code>install.sh</code> and <code>restore.sh</code> — SDDM QML files now deploy on <strong>every update unconditionally</strong> (not gated by <code>KEEP_WALLPAPERS</code> or <code>SDDM_OVERWRITE</code>). Wallpaper and face icon deployment respects <code>SDDM_OVERWRITE</code>. LoginScreen Settings references removed from installer, restorer, and GuidePopup tips (changelog entries kept as historical record).</li>
+        <li><strong>FIXED:</strong> Website FAQ SDDM section corrected — now documents system paths (<code>/usr/share/sddm/themes/matugen-minimal/</code>, <code>/usr/share/sddm/faces/</code>) and explains why home-directory paths don't work with SDDM's <code>sddm</code> user permissions.</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.91 <span class="changelog-date">2026-05-25</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> SDDM wallpaper and avatar paths changed from <code>file:///</code> URLs to absolute paths — <code>file:///</code> URLs with spaces or percent-encoding can fail on some Qt/SDDM versions. Plain absolute paths work universally.</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.90 <span class="changelog-date">2026-05-25</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> User override directories (<code>~/.config/hypr/Faces/</code>, <code>LoginScreen Settings/</code>, <code>Lockscreen Wallpaper/</code>) — install.sh and restore.sh now NEVER overwrite existing user files.</li>
+        <li><strong>FIXED:</strong> System SDDM directories (<code>/usr/share/sddm/faces/</code>, <code>/usr/share/sddm/themes/matugen-minimal/</code>) — now always overwritten with latest defaults on every update.</li>
+        <li><strong>FIXED:</strong> Face icon now deployed to <code>/usr/share/sddm/faces/</code> (was missing — SDDM avatar would fail when LoginScreen Settings was empty).</li>
+        <li><strong>FIXED:</strong> restore.sh SDDM theme deploy no longer skips if directory already exists — always updates to latest.</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.89 <span class="changelog-date">2026-05-25</span></div>
+      <ul>
+        <li><strong>FIXED:</strong> GuidePopup face icon cache now re-validates resolved path — if cached file no longer exists, rescans all face icon locations.</li>
+        <li><strong>FIXED:</strong> SDDM avatar <code>.face</code> fallback was blocked by incorrect <code>else if</code> condition — now uses <code>indexOf('.face.icon')</code> so fallthrough works correctly.</li>
+        <li><strong>FIXED:</strong> SDDM wallpaper relative path in theme.conf — replaced with fully-qualified path to theme directory for consistent resolution.</li>
+        <li><strong>FIXED:</strong> install.sh and restore.sh now self-deploy during updates (they live outside <code>Hyprland/scripts/</code> and were missed by rsync).</li>
+        <li><strong>FIXED:</strong> Deployed restore.sh now uses generic <code>.face.icon</code> instead of per-username <code>${CURRENT_USER}.face.icon</code>.</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.82 <span class="changelog-date">2026-05-24</span></div>
       <ul>
         <li><strong>FIXED:</strong> All <code>~/.Wallpapers/</code> references removed — no fallback, no migration code left behind</li>
@@ -170,13 +206,7 @@
         <li><strong>NEW:</strong> <code>tip_icon.svg</code> — custom lightbulb SVG icon with gradient fills and glow dots</li>
       </ul>
     </div>
-    <div class="changelog-item fade-in">
-      <div class="changelog-version">v1.7.82 <span class="changelog-date">2026-05-23</span></div>
-      <ul>
-        <li><strong>FIXED:</strong> All <code>~/.Wallpapers/</code> references removed — no fallback, no migration code left behind</li>
-        <li><strong>CHANGED:</strong> Face icon and lockscreen wallpaper paths consolidated under <code>~/.config/hypr/Faces/</code> and <code>~/.config/hypr/Lockscreen Wallpaper/</code></li>
-      </ul>
-    </div>
+
     <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.81 <span class="changelog-date">2026-05-23</span></div>
       <ul>
@@ -565,7 +595,7 @@
     <a href="keybinds.html">Keybinds</a>
   </div>
   <p>WifeRice — <a href="https://github.com/eprahemi/WifeRice" target="_blank">github.com/eprahemi/WifeRice</a></p>
-  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-24</span></p>
+  <p style="margin-top:8px;font-size:13px;color:var(--text3);">Last updated <span id="last-updated">2026-05-26</span></p>
 </footer>
 
 <script>
