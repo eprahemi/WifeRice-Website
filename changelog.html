@@ -53,6 +53,18 @@
 <section>
   <div class="container narrow">
     <div class="changelog-item fade-in">
+      <div class="changelog-version">v1.7.93 <span class="changelog-date">2026-05-27</span></div>
+      <ul>
+        <li><strong>CRITICAL FIX:</strong> swayidle fully removed — replaced with <code>hypridle-git</code> from AUR. swayidle <code>-w</code> flag blocked 66min suspend because Lock.qml never exits</li>
+        <li><strong>FIXED:</strong> hypridle.conf now ACTIVE — handles lock before sleep, idle timeout lock (33min), and idle timeout suspend (66min) via independent listeners (no <code>-w</code> blocking)</li>
+        <li><strong>FIXED:</strong> Deep S3 (mem) broken on Lenovo laptops — immediate wake in ~2.8s. s2idle forced via <code>mem_sleep_default=s2idle</code> kernel parameter</li>
+        <li><strong>CHANGED:</strong> install.sh — swayidle removed from pacman list, hypridle-git installed from AUR, hypridle.conf deployed on install/update</li>
+        <li><strong>CHANGED:</strong> autostart.conf, settings.json, default_settings.json now all use hypridle (not swayidle)</li>
+        <li><strong>FIXED:</strong> USB wake enabled on s2idle (XHC in /proc/acpi/wakeup)</li>
+        <li><strong>FIXED:</strong> Polkit rule created for loginctl lock-sessions without password</li>
+      </ul>
+    </div>
+    <div class="changelog-item fade-in">
       <div class="changelog-version">v1.7.92 <span class="changelog-date">2026-05-26</span></div>
       <ul>
         <li><strong>CHANGED:</strong> SDDM assets moved to <strong>system paths only</strong> — <code>~/.config/hypr/LoginScreen Settings/</code> directory has been <strong>removed entirely</strong>. SDDM runs as the <code>sddm</code> user and cannot traverse <code>700</code> home directories — this was the root cause of the blank login screen for many users. All SDDM files now live under <code>/usr/share/sddm/</code>. QML theme files always update on every install. Wallpaper/face icons respect <code>SDDM_OVERWRITE</code> prompt.</li>
